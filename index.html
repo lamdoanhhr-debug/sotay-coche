@@ -580,8 +580,8 @@ footer p { font-size: 12px; color: var(--text3); }
   <!-- ══════════════════════════════════════
        TAB 3 — REVIEW ĐỊNH KỲ
   ══════════════════════════════════════ -->
-  <div class="panel" id="p2">
-
+ <div class="panel" id="panel-0">
+    
     <div class="banner">
       <div class="banner-top">
         <div class="bico" style="background:var(--blue-bg);border:1px solid var(--blue-bd)">
@@ -637,7 +637,54 @@ footer p { font-size: 12px; color: var(--text3); }
         <div class="krow"><div class="kdot"></div><div class="klbl">T+10 </div><div class="kval">Cập nhật lại kết quả phê duyệt của Ban lãnh đạo và gửi kết quả cuối cùng cho bộ phận nhân sự</div></div>
       </div>
     </div>
-      
+  <div id="tool-calc" class="tool-wrap">
+
+    <div class="tool-head">
+      <h2>Công cụ tính xếp hạng</h2>
+      <p>Nhập số liệu thực tế để xác định level hiện tại</p>
+    </div>
+    <div class="tn-card">
+      <div><div class="tn-lbl">Hệ số thâm niên</div><div class="tn-val" id="tn-display">× 0.60</div></div>
+      <div class="tn-div"></div>
+      <div class="tn-opts">
+        <button class="tn-btn active" data-val="0.6" onclick="setTN(this)">≤ 6 tháng — 0.60</button>
+        <button class="tn-btn" data-val="0.85" onclick="setTN(this)">6 tháng – 1 năm — 0.85</button>
+        <button class="tn-btn" data-val="1" onclick="setTN(this)">> 1 năm — 1.00</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-head">
+        <div class="ch-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.75"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M8 12h8M8 8h5M8 16h3"/></svg></div>
+        <div class="ch-txt"><h2>Chỉ tiêu thực tế tháng</h2><p>Điền đầy đủ 6 chỉ tiêu — Doanh thu phí dùng chung cho cả 3 nhóm xếp hạng</p></div>
+      </div>
+      <div class="fields">
+        <div class="field"><label>TOI TB/tháng (VND)</label><input type="number" id="toi" placeholder="VD: 36,000,000" min="0"><span class="hint">Target: <b>40,000,000</b> · tỷ trọng 25% · L1+2</span></div>
+        <div class="field"><label>NAV TB/tháng (VND)</label><input type="number" id="nav" placeholder="VD: 25,000,000,000" min="0"><span class="hint">Dùng cho MGCC · L1: 18tỷ → L4: 50tỷ</span></div>
+        <div class="field"><label>Doanh thu phí TB/tháng (VND)</label><input type="number" id="dtp" placeholder="VD: 90,000,000" min="0"><span class="hint">Target: <b>30,000,000</b> · tỷ trọng 35% · dùng cả 3 nhóm</span></div>
+        <div class="field"><label>Mức phí giao dịch cơ sở (%)</label><input type="number" id="phi" placeholder="VD: 22" min="0" step="0.1"><span class="hint">Cần <b>≥ 22%</b> mới xét MGCC</span></div>
+        <div class="field"><label>Tỷ lệ KH giao dịch (%)</label><input type="number" id="khgd" placeholder="VD: 45" min="0" step="0.1"><span class="hint">Target: <b>50%</b> · tỷ trọng 20%</span></div>
+        <div class="field"><label>Số SP TB/khách hàng</label><input type="number" id="sp" placeholder="VD: 2.5" min="0" step="0.1"><span class="hint">Target: <b>3</b> · tỷ trọng 20%</span></div>
+      </div>
+    </div>
+
+    <button class="cta-btn" onclick="calcLevel()">Tính xếp hạng level →</button>
+
+    <div id="level-result" style="display:none">
+      <div class="result-sep"><div class="line"></div><span>Kết quả phân tích</span><div class="line"></div></div>
+      <div class="breakdown-grid">
+        <div class="bc" id="bc1"><div class="bc-group">Nhóm Level 1 + 2</div><div class="bc-level" id="v1">—</div><div class="bc-detail" id="d1"></div></div>
+        <div class="bc" id="bc2"><div class="bc-group">Nhóm Level 3 – 9</div><div class="bc-level" id="v2">—</div><div class="bc-detail" id="d2"></div></div>
+        <div class="bc" id="bc3"><div class="bc-group">Nhóm MGCC</div><div class="bc-level" id="v3">—</div><div class="bc-detail" id="d3"></div></div>
+      </div>
+      <div class="final-card" id="level-final">
+        <div><div class="final-lbl">Level xếp hạng cuối cùng</div><div class="final-val" id="level-final-val">—</div></div>
+        <div class="final-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+      </div>
+      <button class="reset-btn" id="level-reset" onclick="resetLevel()">↺ Nhập lại từ đầu</button>
+    </div>
+  </div>
+</div> 
   <footer>
     <p>Tài liệu nội bộ · Không phát hành ra bên ngoài · © 2025</p>
     <span class="fpill">Internal Handbook 2025</span>
@@ -809,6 +856,71 @@ function calcProb() {
   document.getElementById('pfs').textContent = 'Tổng điểm KPI: ' + total.toFixed(1) + '% ' + (pass ? '(≥ 80% ✓)' : '(cần ≥ 80%)');
   document.getElementById('pfbar').className = 'fbar ' + (pass ? 'pass' : 'fail');
   document.getElementById('pres').style.display = 'block';
+}
+// ══════════════════════════════
+// PANEL 1 — LEVEL
+// ══════════════════════════════
+var tn=0.6;
+function setTN(el){
+  tn=parseFloat(el.dataset.val);
+  document.querySelectorAll('.tn-btn').forEach(function(b){b.className='tn-btn'+(b===el?' active':'');});
+  document.getElementById('tn-display').textContent='× '+tn.toFixed(2);
+}
+function toScore(s){
+  if(!s||s==='Chưa đạt'||s==='Không đủ ĐK')return 0;
+  if(s.startsWith('MGCC'))return 9+parseInt(s.slice(-1));
+  return parseInt(s.slice(-1));
+}
+function fromScore(s){
+  if(s<=0)return'Chưa đạt';
+  if(s>=10)return'MGCC Level '+(s-9);
+  return'MG Level '+s;
+}
+function calcL12(toi,dtp,khgd,sp){
+  var t=Math.min(toi/40000000,1),d=Math.min(dtp/30000000,1),k=Math.min(khgd/50,1),s=Math.min(sp/3,1);
+  var kpi=t*.25+d*.35+k*.20+s*.20;
+  var pct=(kpi*100).toFixed(1);
+  if(kpi>=.9)return{lv:'MG Level 2',det:'KPI tổng hợp: '+pct+'%'};
+  if(kpi>=.8)return{lv:'MG Level 1',det:'KPI tổng hợp: '+pct+'%'};
+  return{lv:'Chưa đạt',det:'KPI: '+pct+'% (cần ≥ 80%)'};
+}
+function calcL39(dtp,b24){
+  var d=dtp/b24;
+  var tiers=[[900000000,'MG Level 9'],[500000000,'MG Level 8'],[240000000,'MG Level 7'],[160000000,'MG Level 6'],[90000000,'MG Level 5'],[50000000,'MG Level 4'],[40000000,'MG Level 3']];
+  for(var i=0;i<tiers.length;i++){if(d>=tiers[i][0])return{lv:tiers[i][1],det:'DTP quy đổi: '+fmtVND(Math.round(d))};}
+  return{lv:'Chưa đạt',det:'DTP quy đổi: '+fmtVND(Math.round(d))+' (cần ≥ 40tr)'};
+}
+function calcMGCC(phi,dtp,nav,b24){
+  if(phi<22)return{lv:'Không đủ ĐK',det:'Phí '+phi+'% < 22%'};
+  var d=dtp/b24,ld=0,ln=0;
+  if(d>=240000000)ld=4;else if(d>=160000000)ld=3;else if(d>=90000000)ld=2;else if(d>=50000000)ld=1;
+  if(nav>=50000000000)ln=4;else if(nav>=40000000000)ln=3;else if(nav>=30000000000)ln=2;else if(nav>=18000000000)ln=1;
+  var lv=Math.min(ld,ln);
+  if(lv===0)return{lv:'Chưa đạt',det:'DTP lv'+ld+' · NAV lv'+ln+' → min=0'};
+  return{lv:'MGCC Level '+lv,det:'DTP lv'+ld+' · NAV lv'+ln+' → min='+lv};
+}
+function setBox(bcId,vid,did,obj){
+  var ok=obj.lv!=='Chưa đạt'&&obj.lv!=='Không đủ ĐK';
+  document.getElementById(bcId).className='bc '+(ok?'hit':'miss');
+  var ve=document.getElementById(vid);ve.className='bc-level '+(ok?'green':'red');ve.textContent=obj.lv;
+  document.getElementById(did).textContent=obj.det;
+}
+function calcLevel(){
+  var toi=n('toi'),dtp=n('dtp'),khgd=n('khgd'),sp=n('sp'),nav=n('nav'),phi=n('phi');
+  var g1=calcL12(toi,dtp,khgd,sp),g2=calcL39(dtp,tn),g3=calcMGCC(phi,dtp,nav,tn);
+  var rs=document.getElementById('level-result');rs.style.display='block';
+  setTimeout(function(){rs.scrollIntoView({behavior:'smooth',block:'nearest'});},50);
+  setBox('bc1','v1','d1',g1);setBox('bc2','v2','d2',g2);setBox('bc3','v3','d3',g3);
+  var best=Math.max(toScore(g1.lv),toScore(g2.lv),toScore(g3.lv));
+  document.getElementById('level-final-val').textContent=fromScore(best);
+  document.getElementById('level-reset').style.display='block';
+  var fc=document.getElementById('level-final');
+  fc.className=best>=10?'final-card achieved-mgcc':best>0?'final-card achieved':'final-card';
+}
+function resetLevel(){
+  ['toi','nav','dtp','phi','khgd','sp'].forEach(function(id){document.getElementById(id).value='';});
+  document.getElementById('level-result').style.display='none';
+  document.getElementById('level-reset').style.display='none';
 }
 
 // ── Checklist ──
