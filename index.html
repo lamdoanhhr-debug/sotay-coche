@@ -577,118 +577,106 @@ footer p { font-size: 12px; color: var(--text3); }
     </div>
   </div>
 
-  <!-- ══════════════════════════════════════
-       TAB 3 — REVIEW ĐỊNH KỲ
-  ══════════════════════════════════════ -->
- <div class="panel" id="panel-0">
-    
-    <div class="banner">
-      <div class="banner-top">
-        <div class="bico" style="background:var(--blue-bg);border:1px solid var(--blue-bd)">
-          <svg viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="1.5"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
-        </div>
-        <h3>Cơ chế Review Định kỳ — 6 tháng/lần</h3>
+<!-- ══════════════════ TAB 3 — REVIEW ĐỊNH KỲ ══════════════════ -->
+<div class="panel" id="p2">
+  <div class="banner">
+    <div class="banner-top">
+      <div class="bico" style="background:var(--blue-bg);border:1px solid var(--blue-bd)">
+        <svg viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="1.5"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
       </div>
-      <p>Review <strong style="color:var(--blue)">thời điểm </strong> ghi nhận thành tích, xác định điểm phát triển và đặt mục tiêu rõ ràng cho 6 tháng tiếp theo. Kết quả là cơ sở chính thức để điều chỉnh lương và xét thăng hạng.</p>
-      <div class="pills">
-        <span class="pill" style="background:var(--blue-bg);border-color:var(--blue-bd);color:#0C447C">Kỳ 1: Tháng 1 – 6</span>
-        <span class="pill" style="background:var(--blue-bg);border-color:var(--blue-bd);color:#0C447C">Kỳ 2: Tháng 7 – 12</span>
-        <span class="pill" style="background:var(--green-bg);border-color:var(--green-bd);color:#0A6035">Áp dụng: toàn bộ Môi giới (ký HĐLĐ >= 2 tháng cho tới thời điểm đánh giá)</span>
-      </div>
+      <h3>Cơ chế Review Định kỳ — 6 tháng/lần</h3>
     </div>
-
-    <div class="acc">
-      <button class="acc-head open" onclick="tog(this)">
-        <span class="atitle">Khung đánh giá 2 trụ cột <span class="atag">kết quả + năng lực</span></span>
-        <svg class="aarr" viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M6 9l6 6 6-6"/></svg>
-      </button>
-      <div class="acc-body open">
-        <div class="kgrid">
-          <div class="kcard"><div class="kc-l">Trụ cột 1</div><div class="kc-v">Kết quả KD</div><div class="kc-s">Doanh thu · TK · Retention · Tuân thủ</div></div>
-          <div class="kcard"><div class="kc-l">Trụ cột 2</div><div class="kc-v">Năng lực hành vi</div><div class="kc-s">6 tiêu chí · Thang 1–5 điểm</div></div>
-        </div>
-        <div class="krow" style="margin-top:.5rem"><div class="kdot"></div><div class="klbl">Trọng số</div><div class="kval">Công bố cụ thể đầu mỗi năm — nhân viên biết rõ <b>trước khi kỳ bắt đầu</b></div></div>
-        <div class="krow"><div class="kdot"></div><div class="klbl">Calibration</div><div class="kval">Trưởng nhóm + GĐ KD họp đồng thuận kết quả <b>trước</b> khi công bố chính thức</div></div>
-      </div>
-    </div>
-
-    <div class="acc">
-      <button class="acc-head" onclick="tog(this)">
-        <span class="atitle">Thang xếp loại & Hệ quả <span class="atag">tính theo Client careby</span></span>
-        <svg class="aarr" viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M6 9l6 6 6-6"/></svg>
-      </button>
-      <div class="acc-body">
-        <div class="krow"><div class="kdot"></div><div class="klbl" style="color:var(--green)">Level 1 - 2 </div><div class="kval">Xét theo bộ chỉ tiêu bổ sung gồm 4 chỉ tiêu trong cơ chế 2025</div></div>
-        <div class="krow"><div class="kdot"></div><div class="klbl" style="color:#3B6D11">Level 3 - 9</div><div class="kval">Áp dụng theo kịch bản thanh khoản thị trường trong cơ chế 2025</div></div>
-        <div class="krow"><div class="kdot"></div><div class="klbl">Môi giới cao cấp</div><div class="kval">Áp dụng theo cơ chế 2018</div></div>
-        <div class="krow"><div class="kdot"></div><div class="klbl" style="color:var(--red)">Không đạt</div><div class="kval">Xem xét vị trí MGĐL hoặc chấm dứt hợp đồng</div></div>
-      </div>
-    </div>
-
-    <div class="acc">
-      <button class="acc-head" onclick="tog(this)">
-        <span class="atitle">Timeline review mỗi kỳ<span class="atag">quy trình</span></span>
-        <svg class="aarr" viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M6 9l6 6 6-6"/></svg>
-      </button>
-      <div class="acc-body">
-        <div class="krow"><div class="kdot"></div><div class="klbl">Ngày 5 tháng kế tiếp sau khi kết thúc kỳ review (ngày T)</div><div class="kval">Bộ phận CAPC gửi kết quả review</div></div>
-        <div class="krow"><div class="kdot"></div><div class="klbl">Ngày T+ 3 </div><div class="kval">Trưởng phòng/Giám đốc gửi phản hồi thắc mắc hoặc đề xuất ngoại lệ</div></div>
-        <div class="krow"><div class="kdot"></div><div class="klbl">Ngày T + 6</div><div class="kval">Review đề xuất ngoại lệ và trình Ban lãnh đạo</div></div>
-        <div class="krow"><div class="kdot"></div><div class="klbl">T+10 </div><div class="kval">Cập nhật lại kết quả phê duyệt của Ban lãnh đạo và gửi kết quả cuối cùng cho bộ phận nhân sự</div></div>
-      </div>
-    </div>
-  <div id="tool-calc" class="tool-wrap">
-
-    <div class="tool-head">
-      <h2>Công cụ tính xếp hạng</h2>
-      <p>Nhập số liệu thực tế để xác định level hiện tại</p>
-    </div>
-    <div class="tn-card">
-      <div><div class="tn-lbl">Hệ số thâm niên</div><div class="tn-val" id="tn-display">× 0.60</div></div>
-      <div class="tn-div"></div>
-      <div class="tn-opts">
-        <button class="tn-btn active" data-val="0.6" onclick="setTN(this)">≤ 6 tháng — 0.60</button>
-        <button class="tn-btn" data-val="0.85" onclick="setTN(this)">6 tháng – 1 năm — 0.85</button>
-        <button class="tn-btn" data-val="1" onclick="setTN(this)">> 1 năm — 1.00</button>
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="card-head">
-        <div class="ch-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.75"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M8 12h8M8 8h5M8 16h3"/></svg></div>
-        <div class="ch-txt"><h2>Chỉ tiêu thực tế tháng</h2><p>Điền đầy đủ 6 chỉ tiêu — Doanh thu phí dùng chung cho cả 3 nhóm xếp hạng</p></div>
-      </div>
-      <div class="fields">
-        <div class="field"><label>TOI TB/tháng (VND)</label><input type="number" id="toi" placeholder="VD: 36,000,000" min="0"><span class="hint">Target: <b>40,000,000</b> · tỷ trọng 25% · L1+2</span></div>
-        <div class="field"><label>NAV TB/tháng (VND)</label><input type="number" id="nav" placeholder="VD: 25,000,000,000" min="0"><span class="hint">Dùng cho MGCC · L1: 18tỷ → L4: 50tỷ</span></div>
-        <div class="field"><label>Doanh thu phí TB/tháng (VND)</label><input type="number" id="dtp" placeholder="VD: 90,000,000" min="0"><span class="hint">Target: <b>30,000,000</b> · tỷ trọng 35% · dùng cả 3 nhóm</span></div>
-        <div class="field"><label>Mức phí giao dịch cơ sở (%)</label><input type="number" id="phi" placeholder="VD: 22" min="0" step="0.1"><span class="hint">Cần <b>≥ 22%</b> mới xét MGCC</span></div>
-        <div class="field"><label>Tỷ lệ KH giao dịch (%)</label><input type="number" id="khgd" placeholder="VD: 45" min="0" step="0.1"><span class="hint">Target: <b>50%</b> · tỷ trọng 20%</span></div>
-        <div class="field"><label>Số SP TB/khách hàng</label><input type="number" id="sp" placeholder="VD: 2.5" min="0" step="0.1"><span class="hint">Target: <b>3</b> · tỷ trọng 20%</span></div>
-      </div>
-    </div>
-
-    <button class="cta-btn" onclick="calcLevel()">Tính xếp hạng level →</button>
-
-    <div id="level-result" style="display:none">
-      <div class="result-sep"><div class="line"></div><span>Kết quả phân tích</span><div class="line"></div></div>
-      <div class="breakdown-grid">
-        <div class="bc" id="bc1"><div class="bc-group">Nhóm Level 1 + 2</div><div class="bc-level" id="v1">—</div><div class="bc-detail" id="d1"></div></div>
-        <div class="bc" id="bc2"><div class="bc-group">Nhóm Level 3 – 9</div><div class="bc-level" id="v2">—</div><div class="bc-detail" id="d2"></div></div>
-        <div class="bc" id="bc3"><div class="bc-group">Nhóm MGCC</div><div class="bc-level" id="v3">—</div><div class="bc-detail" id="d3"></div></div>
-      </div>
-      <div class="final-card" id="level-final">
-        <div><div class="final-lbl">Level xếp hạng cuối cùng</div><div class="final-val" id="level-final-val">—</div></div>
-        <div class="final-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
-      </div>
-      <button class="reset-btn" id="level-reset" onclick="resetLevel()">↺ Nhập lại từ đầu</button>
+    <p>Review là <strong style="color:var(--blue)">thời điểm</strong> ghi nhận thành tích, xác định điểm phát triển và đặt mục tiêu rõ ràng cho 6 tháng tiếp theo. Kết quả là cơ sở chính thức để điều chỉnh lương và xét thăng hạng.</p>
+    <div class="pills">
+      <span class="pill" style="background:var(--blue-bg);border-color:var(--blue-bd);color:#0C447C">Kỳ 1: Tháng 1 – 6</span>
+      <span class="pill" style="background:var(--blue-bg);border-color:var(--blue-bd);color:#0C447C">Kỳ 2: Tháng 7 – 12</span>
+      <span class="pill" style="background:var(--green-bg);border-color:var(--green-bd);color:#0A6035">Áp dụng: Môi giới ký HĐLĐ ≥ 2 tháng tại thời điểm đánh giá</span>
     </div>
   </div>
-</div> 
-  <footer>
-    <p>Tài liệu nội bộ · Không phát hành ra bên ngoài · © 2025</p>
-    <span class="fpill">Internal Handbook 2025</span>
-  </footer>
+
+  <div class="acc">
+    <button class="acc-head open" onclick="tog(this)">
+      <span class="atitle">Khung đánh giá 2 trụ cột <span class="atag">kết quả + năng lực</span></span>
+      <svg class="aarr" viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M6 9l6 6 6-6"/></svg>
+    </button>
+    <div class="acc-body open">
+      <div class="kgrid">
+        <div class="kcard"><div class="kc-l">Trụ cột 1</div><div class="kc-v">Kết quả KD</div><div class="kc-s">Doanh thu · TK · Retention · Tuân thủ</div></div>
+        <div class="kcard"><div class="kc-l">Trụ cột 2</div><div class="kc-v">Năng lực hành vi</div><div class="kc-s">6 tiêu chí · Thang 1–5 điểm</div></div>
+      </div>
+      <div class="krow" style="margin-top:.5rem"><div class="kdot"></div><div class="klbl">Trọng số</div><div class="kval">Công bố cụ thể đầu mỗi năm — nhân viên biết rõ <b>trước khi kỳ bắt đầu</b></div></div>
+      <div class="krow"><div class="kdot"></div><div class="klbl">Calibration</div><div class="kval">Trưởng nhóm + GĐ KD họp đồng thuận kết quả <b>trước</b> khi công bố chính thức</div></div>
+    </div>
+  </div>
+
+  <div class="acc">
+    <button class="acc-head" onclick="tog(this)">
+      <span class="atitle">Thang xếp loại & Hệ quả <span class="atag">tính theo Client care by</span></span>
+      <svg class="aarr" viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M6 9l6 6 6-6"/></svg>
+    </button>
+    <div class="acc-body">
+      <div class="krow"><div class="kdot"></div><div class="klbl" style="color:var(--green)">Level 1 – 2</div><div class="kval">Xét theo bộ chỉ tiêu bổ sung gồm <b>4 chỉ tiêu</b> trong cơ chế 2025</div></div>
+      <div class="krow"><div class="kdot"></div><div class="klbl" style="color:#3B6D11">Level 3 – 9</div><div class="kval">Áp dụng theo <b>kịch bản thanh khoản thị trường</b> trong cơ chế 2025</div></div>
+      <div class="krow"><div class="kdot"></div><div class="klbl" style="color:var(--purple)">Môi giới cao cấp</div><div class="kval">Áp dụng theo <b>cơ chế 2018</b></div></div>
+      <div class="krow"><div class="kdot"></div><div class="klbl" style="color:var(--red)">Không đạt</div><div class="kval">Xem xét vị trí <b>MGĐL</b> hoặc chấm dứt hợp đồng</div></div>
+    </div>
+  </div>
+
+  <div class="acc">
+    <button class="acc-head" onclick="tog(this)">
+      <span class="atitle">Timeline review mỗi kỳ <span class="atag">quy trình</span></span>
+      <svg class="aarr" viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M6 9l6 6 6-6"/></svg>
+    </button>
+    <div class="acc-body">
+      <div class="krow"><div class="kdot"></div><div class="klbl">Ngày 5 tháng kế tiếp (ngày T)</div><div class="kval">Bộ phận CAPC gửi kết quả review chính thức</div></div>
+      <div class="krow"><div class="kdot"></div><div class="klbl">T + 3</div><div class="kval">Trưởng phòng / Giám đốc gửi phản hồi thắc mắc hoặc đề xuất ngoại lệ</div></div>
+      <div class="krow"><div class="kdot"></div><div class="klbl">T + 6</div><div class="kval">Review đề xuất ngoại lệ và trình Ban lãnh đạo</div></div>
+      <div class="krow"><div class="kdot"></div><div class="klbl">T + 10</div><div class="kval">Cập nhật kết quả phê duyệt của Ban lãnh đạo — gửi kết quả cuối cùng cho bộ phận Nhân sự</div></div>
+    </div>
+  </div>
+
+  <div class="sep"><div class="sl"></div><span>Tool xếp hạng level tháng này</span><div class="sl"></div></div>
+
+  <div class="tn-card">
+    <div class="tn-left">
+      <div class="tn-lbl">Hệ số thâm niên</div>
+      <div class="tn-val" id="tn-display">× 0.60</div>
+    </div>
+    <div class="tn-div"></div>
+    <div class="tn-opts">
+      <button class="tn-btn on" data-val="0.6" onclick="setTN(this)">≤ 6 tháng — 0.60</button>
+      <button class="tn-btn" data-val="0.85" onclick="setTN(this)">6 tháng – 1 năm — 0.85</button>
+      <button class="tn-btn" data-val="1" onclick="setTN(this)">> 1 năm — 1.00</button>
+    </div>
+  </div>
+
+  <div class="tcard">
+    <div class="thead2">
+      <div class="tico purple"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+      <span>Nhập chỉ tiêu thực tế — tính xếp hạng Level</span>
+    </div>
+    <div class="tbody2">
+      <div class="fgrid">
+        <div class="fg"><label>TOI TB/tháng (VND)</label><input type="number" id="toi" placeholder="VD: 36,000,000" min="0"><span class="fh">Target 40tr · tỷ trọng 25% · dùng cho L1+2</span></div>
+        <div class="fg"><label>Doanh thu phí TB/tháng (VND)</label><input type="number" id="dtp" placeholder="VD: 90,000,000" min="0"><span class="fh">Target 30tr · tỷ trọng 35% · dùng cho cả 3 nhóm</span></div>
+        <div class="fg"><label>Tỷ lệ KH giao dịch (%)</label><input type="number" id="khgd" placeholder="VD: 45" min="0" step="0.1"><span class="fh">Target 50% · tỷ trọng 20% · nhập số VD: 45</span></div>
+        <div class="fg"><label>Số SP TB/khách hàng</label><input type="number" id="sp" placeholder="VD: 2.5" min="0" step="0.1"><span class="fh">Target 3 · tỷ trọng 20% · dùng cho L1+2</span></div>
+        <div class="fg"><label>NAV TB/tháng (VND)</label><input type="number" id="nav" placeholder="VD: 25,000,000,000" min="0"><span class="fh">Chỉ dùng cho MGCC · L1: 18tỷ → L4: 50tỷ</span></div>
+        <div class="fg"><label>Mức phí giao dịch cơ sở (%)</label><input type="number" id="phi" placeholder="VD: 22" min="0" step="0.1"><span class="fh">Cần ≥ 22% mới xét nhóm MGCC</span></div>
+      </div>
+      <button class="cbtn" onclick="calcLevel()">Tính xếp hạng level →</button>
+      <div class="rarea" id="lres">
+        <div class="rgrid">
+          <div class="rc" id="bc1"><div class="rl">Nhóm L1 + L2</div><div class="rv" id="v1">—</div><div class="rd" id="d1"></div></div>
+          <div class="rc" id="bc2"><div class="rl">Nhóm L3 – L9</div><div class="rv" id="v2">—</div><div class="rd" id="d2"></div></div>
+          <div class="rc" id="bc3"><div class="rl">Nhóm MGCC</div><div class="rv" id="v3">—</div><div class="rd" id="d3"></div></div>
+        </div>
+        <div class="fbar" id="lfbar">
+          <div><div class="fl">Level xếp hạng cuối cùng</div><div class="fv" id="lfv">—</div><div class="fs" id="lfs"></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 
 <script>
