@@ -1,0 +1,886 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sổ Tay Cơ Chế Kinh Doanh — Môi Giới Chứng Khoán</title>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600;700&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+<style>
+:root{
+  --orange:#E8621A;--orange-l:#F57C3A;--orange-dim:#FFF0E8;--orange-bd:#FADCC8;
+  --green:#0F8A4A;--green-bg:#EAF7F1;--green-bd:#B6E8D0;
+  --red:#C0341A;--red-bg:#FEF0ED;--red-bd:#F5C4BA;
+  --blue:#185FA5;--blue-bg:#E6F1FB;--blue-bd:#B5D4F4;
+  --purple:#6B3FA0;--purple-bg:#F2EDFB;--purple-bd:#D4C2F0;
+  --gold:#A07010;--gold-bg:#FFF8EE;--gold-bd:#F5D898;
+  --text:#1A2640;--text2:#4A5A72;--text3:#8A9AB2;
+  --surface:#F7F8FA;--surface2:#ECEEF2;
+  --white:#FFFFFF;--border:#E2E6EC;--border2:#D0D6E0;
+  --R:14px;--Rs:9px;
+  --sh:0 1px 3px rgba(26,38,64,.07),0 4px 16px rgba(26,38,64,.04);
+  --sh-s:0 1px 2px rgba(26,38,64,.06);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Be Vietnam Pro',sans-serif;background:var(--surface);color:var(--text);min-height:100vh;font-size:15px;line-height:1.6}
+.container{max-width:900px;margin:0 auto;padding:0 1.25rem 5rem}
+
+/* Header */
+header{padding:2.5rem 0 2rem;border-bottom:1.5px solid var(--border);margin-bottom:0;display:flex;align-items:flex-end;justify-content:space-between;gap:1rem;flex-wrap:wrap}
+.eyebrow{display:flex;align-items:center;gap:8px;margin-bottom:.5rem}
+.edot{width:7px;height:7px;border-radius:50%;background:var(--orange)}
+.etxt{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--orange)}
+h1{font-family:'DM Serif Display',serif;font-size:clamp(1.6rem,3.5vw,2.2rem);font-weight:400;line-height:1.2}
+h1 em{color:var(--orange);font-style:italic}
+.hdesc{margin-top:.4rem;font-size:13px;color:var(--text3);max-width:460px}
+.vpill{font-size:11px;font-weight:600;padding:5px 13px;border-radius:100px;background:var(--orange-dim);color:var(--orange);border:1px solid var(--orange-bd);white-space:nowrap;align-self:flex-start}
+
+/* Tabs */
+.tab-nav{display:flex;border-bottom:1.5px solid var(--border);margin-bottom:2rem;overflow-x:auto}
+.tb{padding:.875rem 1.25rem;font-family:'Be Vietnam Pro',sans-serif;font-size:13px;font-weight:600;border:none;background:transparent;color:var(--text3);cursor:pointer;border-bottom:2px solid transparent;margin-bottom:-1.5px;white-space:nowrap;transition:all .15s}
+.tb:hover{color:var(--text2)}
+.tb.on{color:var(--orange);border-bottom-color:var(--orange)}
+.tnum{display:inline-flex;align-items:center;justify-content:center;width:18px;height:18px;border-radius:50%;background:var(--surface2);font-size:10px;margin-right:6px;transition:all .15s}
+.tb.on .tnum{background:var(--orange);color:#fff}
+.panel{display:none}.panel.on{display:block}
+
+/* Banner */
+.banner{background:var(--white);border:1px solid var(--border);border-radius:var(--R);box-shadow:var(--sh-s);padding:1.25rem 1.375rem;margin-bottom:1.25rem}
+.banner-top{display:flex;align-items:center;gap:10px;margin-bottom:.625rem}
+.bico{width:34px;height:34px;border-radius:9px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.bico svg{width:17px;height:17px}
+.banner h3{font-size:15px;font-weight:600;color:var(--text)}
+.banner p{font-size:13px;color:var(--text2);line-height:1.65}
+.pills{display:flex;flex-wrap:wrap;gap:7px;margin-top:.875rem}
+.pill{font-size:11px;font-weight:500;padding:4px 11px;border-radius:100px;border:1px solid}
+
+/* Accordion */
+.acc{margin-bottom:.75rem}
+.acc-head{width:100%;display:flex;align-items:center;justify-content:space-between;padding:.875rem 1.125rem;background:var(--white);border:1px solid var(--border);border-radius:var(--Rs);cursor:pointer;text-align:left;transition:background .15s}
+.acc-head:hover{background:var(--surface)}
+.acc-head.open{border-radius:var(--Rs) var(--Rs) 0 0;border-bottom-color:transparent}
+.atitle{font-size:13px;font-weight:600;color:var(--text);display:flex;align-items:center;gap:8px}
+.atag{font-size:11px;padding:2px 8px;border-radius:100px;background:var(--surface2);color:var(--text2);border:1px solid var(--border);font-weight:400}
+.aarr{width:15px;height:15px;stroke:var(--text3);transition:transform .2s;flex-shrink:0}
+.acc-head.open .aarr{transform:rotate(180deg)}
+.acc-body{display:none;background:var(--white);border:1px solid var(--border);border-top:none;border-radius:0 0 var(--Rs) var(--Rs);padding:.875rem 1.125rem}
+.acc-body.open{display:block}
+
+/* Key rows */
+.krow{display:flex;gap:10px;padding:.5rem 0;border-bottom:1px solid var(--border)}
+.krow:last-child{border-bottom:none;padding-bottom:0}
+.kdot{width:5px;height:5px;border-radius:50%;background:var(--orange);flex-shrink:0;margin-top:9px}
+.klbl{font-size:12px;font-weight:600;color:var(--text2);min-width:160px;flex-shrink:0;line-height:1.5}
+.kval{font-size:13px;color:var(--text);line-height:1.6}
+.kval b{font-weight:600;color:var(--orange)}
+.kval .g{color:var(--green);font-weight:600}
+.kval .r{color:var(--red);font-weight:600}
+.kval .bl{color:var(--blue);font-weight:600}
+.kval .pu{color:var(--purple);font-weight:600}
+
+/* KPI cards */
+.kgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:8px;margin:.625rem 0}
+.kcard{background:var(--surface);border:1px solid var(--border);border-radius:var(--Rs);padding:.75rem 1rem}
+.kc-l{font-size:11px;color:var(--text3);margin-bottom:3px}
+.kc-v{font-size:14px;font-weight:600;color:var(--text)}
+.kc-s{font-size:11px;color:var(--text2);margin-top:2px;line-height:1.4}
+
+/* Classification cards */
+.class-grid{display:grid;grid-template-columns:1fr;gap:10px;margin:.625rem 0}
+.class-card{border-radius:var(--Rs);padding:1rem 1.125rem;border:1px solid}
+.class-card .cc-header{display:flex;align-items:center;gap:8px;margin-bottom:.5rem}
+.class-card .cc-badge{font-size:11px;font-weight:700;padding:3px 10px;border-radius:100px}
+.class-card .cc-title{font-size:13px;font-weight:600;color:var(--text)}
+.class-card .cc-body{font-size:13px;color:var(--text2);line-height:1.6}
+.class-card .cc-body b{color:var(--text);font-weight:600}
+.class-card .cc-metrics{display:flex;flex-wrap:wrap;gap:6px;margin-top:.5rem}
+.class-card .cc-metric{font-size:11px;font-weight:500;padding:3px 9px;border-radius:100px;border:1px solid}
+
+/* Timeline */
+.timeline{display:flex;flex-direction:column;gap:0}
+.tl-item{display:flex;gap:14px;padding:.625rem 0}
+.tl-item:last-child{padding-bottom:0}
+.tl-left{display:flex;flex-direction:column;align-items:center;flex-shrink:0;width:48px}
+.tl-dot{width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:11px;font-weight:700}
+.tl-line{flex:1;width:2px;background:var(--border);margin-top:4px}
+.tl-item:last-child .tl-line{display:none}
+.tl-content{padding-top:4px;padding-bottom:8px}
+.tl-day{font-size:12px;font-weight:700;color:var(--text);margin-bottom:2px}
+.tl-desc{font-size:13px;color:var(--text2);line-height:1.55}
+
+/* Alert box */
+.alert{border-radius:var(--Rs);padding:.875rem 1.125rem;border:1px solid;margin:.625rem 0;font-size:13px;line-height:1.6}
+.alert b{font-weight:600}
+
+/* Separator */
+.sep{display:flex;align-items:center;gap:10px;margin:1.5rem 0 1.125rem}
+.sep .sl{flex:1;height:1px;background:var(--border)}
+.sep span{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--text3)}
+
+/* Tool card */
+.tcard{background:var(--white);border:1px solid var(--border);border-radius:var(--R);box-shadow:var(--sh);overflow:hidden}
+.thead2{padding:1rem 1.375rem;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:10px}
+.tico{width:32px;height:32px;border-radius:8px;background:var(--orange-dim);border:1px solid var(--orange-bd);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.tico svg{width:15px;height:15px;stroke:var(--orange)}
+.tico.blue{background:var(--blue-bg);border-color:var(--blue-bd)}.tico.blue svg{stroke:var(--blue)}
+.tico.purple{background:var(--purple-bg);border-color:var(--purple-bd)}.tico.purple svg{stroke:var(--purple)}
+.thead2 span{font-size:14px;font-weight:600;color:var(--text)}
+.tbody2{padding:1.125rem 1.375rem}
+
+/* Form */
+.fg{display:flex;flex-direction:column;gap:4px;margin-bottom:10px}
+.fg label{font-size:12px;font-weight:600;color:var(--text2)}
+.fg input,.fg select{background:var(--surface);border:1px solid var(--border2);border-radius:var(--Rs);padding:9px 12px;font-family:'Be Vietnam Pro',sans-serif;font-size:13px;color:var(--text);width:100%;transition:border-color .15s,box-shadow .15s;-moz-appearance:textfield}
+.fg input::-webkit-outer-spin-button,.fg input::-webkit-inner-spin-button{-webkit-appearance:none}
+.fg input::placeholder{color:var(--text3)}
+.fg input:focus,.fg select:focus{outline:none;border-color:var(--orange);box-shadow:0 0 0 3px rgba(232,98,26,.1)}
+.fg .fh{font-size:11px;color:var(--text3)}
+.fgrid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+
+/* Radio pills */
+.rpills{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:12px}
+.rpill{padding:7px 15px;font-family:'Be Vietnam Pro',sans-serif;font-size:12px;font-weight:500;border:1px solid var(--border2);border-radius:100px;background:var(--surface);color:var(--text2);cursor:pointer;transition:all .15s}
+.rpill:hover{border-color:var(--orange-l);color:var(--orange);background:var(--orange-dim)}
+.rpill.on{background:var(--orange);border-color:var(--orange);color:#fff;font-weight:600}
+
+/* Buttons */
+.cbtn{width:100%;padding:11px;font-family:'Be Vietnam Pro',sans-serif;font-size:14px;font-weight:700;border:none;border-radius:var(--Rs);background:var(--orange);color:#fff;cursor:pointer;transition:background .15s,box-shadow .15s;box-shadow:0 2px 8px rgba(232,98,26,.2)}
+.cbtn:hover{background:var(--orange-l);box-shadow:0 4px 14px rgba(232,98,26,.3)}
+.cbtn:active{transform:scale(.99)}
+
+/* Result */
+.rarea{display:none;margin-top:1.125rem}
+.rgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:.875rem}
+.rc{background:var(--surface);border:1px solid var(--border);border-radius:var(--Rs);padding:.75rem 1rem;transition:all .2s}
+.rc.hit{background:var(--green-bg);border-color:var(--green-bd)}
+.rc.miss{background:var(--red-bg);border-color:var(--red-bd)}
+.rc .rl{font-size:10px;text-transform:uppercase;letter-spacing:.08em;color:var(--text3);margin-bottom:4px}
+.rc.hit .rl{color:#0A6035}.rc.miss .rl{color:#8A2510}
+.rc .rv{font-size:14px;font-weight:600}
+.rc .rd{font-size:11px;color:var(--text3);margin-top:2px}
+.rc.hit .rd{color:#2A7A52}.rc.miss .rd{color:#8A3520}
+.fbar{background:var(--surface);border:1px solid var(--border);border-radius:var(--Rs);padding:1.125rem 1.25rem;display:flex;align-items:center;justify-content:space-between;gap:1rem}
+.fbar.pass{background:var(--green-bg);border-color:var(--green-bd)}
+.fbar.fail{background:var(--red-bg);border-color:var(--red-bd)}
+.fbar.lvl{background:var(--orange-dim);border-color:var(--orange-bd)}
+.fbar.mgcc{background:var(--gold-bg);border-color:var(--gold-bd)}
+.fl{font-size:10px;text-transform:uppercase;letter-spacing:.08em;color:var(--text3);margin-bottom:4px}
+.fbar.pass .fl{color:#0A6035}.fbar.fail .fl{color:#8A2510}
+.fbar.lvl .fl{color:#B04A10}.fbar.mgcc .fl{color:var(--gold)}
+.fv{font-family:'DM Serif Display',serif;font-size:1.75rem;font-weight:400;color:var(--text);line-height:1.1}
+.fbar.pass .fv{color:var(--green)}.fbar.fail .fv{color:var(--red)}
+.fbar.lvl .fv{color:var(--orange)}.fbar.mgcc .fv{color:var(--gold)}
+.fs{font-size:12px;color:var(--text2);margin-top:3px}
+
+/* Progress bar */
+.bwrap{margin:.375rem 0}
+.bmeta{display:flex;justify-content:space-between;font-size:11px;color:var(--text2);margin-bottom:4px}
+.bbg{height:6px;background:var(--surface2);border-radius:100px;overflow:hidden}
+.bfill{height:100%;border-radius:100px;transition:width .4s ease}
+
+/* Commission table */
+.ctw{border:1px solid var(--border);border-radius:var(--Rs);overflow:hidden;margin-bottom:.875rem}
+.ctbl{width:100%;border-collapse:collapse;table-layout:fixed}
+.ctbl th{background:var(--surface2);padding:.625rem .875rem;font-size:11px;font-weight:700;color:var(--text2);text-align:left;border-bottom:1px solid var(--border)}
+.ctbl td{padding:.625rem .875rem;font-size:13px;color:var(--text);border-bottom:1px solid var(--border);vertical-align:middle}
+.ctbl tr:last-child td{border-bottom:none}
+.ctbl tr:hover td{background:var(--surface)}
+.ctbl td input,.ctbl td select{background:var(--surface);border:1px solid var(--border);border-radius:6px;padding:5px 8px;font-size:12px;font-family:'Be Vietnam Pro',sans-serif;color:var(--text);width:100%;-moz-appearance:textfield}
+.ctbl td input::-webkit-outer-spin-button,.ctbl td input::-webkit-inner-spin-button{-webkit-appearance:none}
+.ctbl td input:focus,.ctbl td select:focus{outline:none;border-color:var(--orange)}
+.rc2{color:var(--orange);font-weight:600;font-size:12px}
+.ac2{color:var(--green);font-weight:600;font-size:12px}
+.dc2{text-align:center;width:36px}
+.dbtn{width:24px;height:24px;border-radius:6px;border:1px solid var(--border2);background:var(--surface);color:var(--text3);font-size:14px;cursor:pointer;display:inline-flex;align-items:center;justify-content:center}
+.dbtn:hover{background:var(--red-bg);border-color:var(--red-bd);color:var(--red)}
+.tfoot-r td{background:var(--surface2);font-weight:600;font-size:13px;padding:.75rem .875rem;border-top:1px solid var(--border2)}
+.tfoot-r .tot{color:var(--orange);font-size:15px;font-weight:700}
+.addbtn{width:100%;padding:9px;font-family:'Be Vietnam Pro',sans-serif;font-size:13px;font-weight:500;border:1.5px dashed var(--border2);border-radius:var(--Rs);background:transparent;color:var(--text2);cursor:pointer;margin-bottom:1rem;transition:all .15s}
+.addbtn:hover{border-color:var(--orange);color:var(--orange);background:var(--orange-dim)}
+
+/* Summary */
+.sbox{background:var(--white);border:1px solid var(--border);border-radius:var(--R);overflow:hidden;margin-top:1rem;display:none}
+.shead{padding:.875rem 1.25rem;background:var(--orange);display:flex;align-items:center;justify-content:space-between}
+.shead h4{font-size:13px;font-weight:600;color:#fff}
+.cpybtn{padding:5px 13px;font-size:12px;font-weight:500;border:1px solid rgba(255,255,255,.5);border-radius:100px;background:transparent;color:#fff;cursor:pointer;font-family:'Be Vietnam Pro',sans-serif}
+.cpybtn:hover{background:rgba(255,255,255,.15)}
+.sbody{padding:1rem 1.25rem}
+.smeta{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-bottom:1rem;padding-bottom:1rem;border-bottom:1px solid var(--border)}
+.sml{font-size:10px;text-transform:uppercase;letter-spacing:.08em;color:var(--text3);margin-bottom:2px}
+.smv{font-size:14px;font-weight:600;color:var(--text)}
+.stbl{width:100%;border-collapse:collapse;font-size:13px}
+.stbl th{text-align:left;padding:6px 8px;font-size:10px;font-weight:700;color:var(--text3);text-transform:uppercase;letter-spacing:.06em;border-bottom:1px solid var(--border)}
+.stbl td{padding:7px 8px;border-bottom:1px solid var(--border)}
+.stbl .str td{font-weight:700;color:var(--orange);padding-top:10px;border-bottom:none;border-top:2px solid var(--border)}
+
+/* Thâm niên */
+.tn-card{background:var(--white);border:1px solid var(--border);border-radius:var(--R);box-shadow:var(--sh-s);padding:1.125rem 1.375rem;margin-bottom:1.25rem;display:flex;align-items:center;gap:1.25rem;flex-wrap:wrap}
+.tn-left{flex-shrink:0}
+.tn-lbl{font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--text3);margin-bottom:2px}
+.tn-val{font-family:'DM Serif Display',serif;font-size:1.75rem;color:var(--orange);line-height:1}
+.tn-div{width:1px;height:36px;background:var(--border);flex-shrink:0}
+.tn-opts{display:flex;gap:8px;flex-wrap:wrap}
+.tn-btn{padding:7px 16px;font-family:'Be Vietnam Pro',sans-serif;font-size:12px;font-weight:500;border:1px solid var(--border2);border-radius:100px;background:var(--surface);color:var(--text2);cursor:pointer;transition:all .15s;white-space:nowrap}
+.tn-btn:hover{border-color:var(--orange-l);color:var(--orange);background:var(--orange-dim)}
+.tn-btn.on{background:var(--orange);border-color:var(--orange);color:#fff;font-weight:600}
+
+/* Footer */
+footer{margin-top:3rem;padding-top:1.5rem;border-top:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:.75rem}
+footer p{font-size:12px;color:var(--text3)}
+.fpill{font-size:11px;font-weight:600;padding:4px 12px;border-radius:100px;background:var(--surface2);border:1px solid var(--border);color:var(--text3)}
+
+@media(max-width:600px){
+  .fgrid{grid-template-columns:1fr}
+  .kgrid,.rgrid{grid-template-columns:1fr 1fr}
+  .smeta{grid-template-columns:1fr 1fr}
+  header{flex-direction:column;align-items:flex-start}
+  .klbl{min-width:110px}
+  .tn-div{display:none}
+}
+</style>
+</head>
+<body>
+<div class="container">
+
+<header>
+  <div>
+    <div class="eyebrow"><div class="edot"></div><span class="etxt">Sổ tay nội bộ · Đội ngũ Môi giới</span></div>
+    <h1>Cơ Chế <em>Kinh Doanh</em><br>Môi Giới Chứng Khoán</h1>
+    <p class="hdesc">3 cơ chế cốt lõi: Payout · Đánh giá thử việc · Review định kỳ — hiểu nhanh, áp dụng ngay.</p>
+  </div>
+  <span class="vpill">Phiên bản 2025</span>
+</header>
+
+<div class="tab-nav">
+  <button class="tb on" onclick="sw(0,this)"><span class="tnum">1</span>Cơ chế Payout</button>
+  <button class="tb" onclick="sw(1,this)"><span class="tnum">2</span>Đánh giá Thử việc</button>
+  <button class="tb" onclick="sw(2,this)"><span class="tnum">3</span>Review Định kỳ</button>
+</div>
+
+<!-- ══════════════════ TAB 1 — PAYOUT ══════════════════ -->
+<div class="panel on" id="p0">
+  <div class="banner">
+    <div class="banner-top">
+      <div class="bico" style="background:var(--orange-dim);border:1px solid var(--orange-bd)">
+        <svg viewBox="0 0 24 24" fill="none" stroke="var(--orange)" stroke-width="1.5"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
+      </div>
+      <h3>Cơ chế Payout — Hoa hồng theo sản phẩm</h3>
+    </div>
+    <p>Hoa hồng được tính theo công thức: <strong style="color:var(--orange)">Doanh số × Tỷ lệ % cố định theo từng sản phẩm</strong>. Nhập danh mục khách hàng để hệ thống tự tính tổng hoa hồng tháng.</p>
+    <div class="pills">
+      <span class="pill" style="background:var(--orange-dim);border-color:var(--orange-bd);color:#B04A10">Thanh toán: ngày 10 tháng kế</span>
+      <span class="pill" style="background:var(--green-bg);border-color:var(--green-bd);color:#0A6035">Áp dụng: toàn bộ Môi giới</span>
+      <span class="pill" style="background:var(--blue-bg);border-color:var(--blue-bd);color:#0C447C">Chốt số: cuối tháng</span>
+    </div>
+  </div>
+
+  <div class="acc">
+    <button class="acc-head open" onclick="tog(this)">
+      <span class="atitle">Nguyên tắc tính hoa hồng <span class="atag">cần biết</span></span>
+      <svg class="aarr" viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M6 9l6 6 6-6"/></svg>
+    </button>
+    <div class="acc-body open">
+      <div class="krow"><div class="kdot"></div><div class="klbl">Công thức</div><div class="kval">Hoa hồng = <b>Doanh số × Tỷ lệ %</b> cố định theo từng loại sản phẩm</div></div>
+      <div class="krow"><div class="kdot"></div><div class="klbl">Cơ sở doanh số</div><div class="kval">Giá trị giao dịch <b>thực tế phát sinh</b> trong tháng — không tính lệnh hủy/chờ</div></div>
+      <div class="krow"><div class="kdot"></div><div class="klbl">Hoàn nhập</div><div class="kval">KH hủy lệnh trong <b>3 ngày làm việc</b> → hoa hồng bị hoàn nhập vào kỳ tiếp theo</div></div>
+      <div class="krow"><div class="kdot"></div><div class="klbl">Nhiều sản phẩm</div><div class="kval">Tính từng dòng theo sản phẩm × khách hàng, cộng dồn ra tổng hoa hồng tháng</div></div>
+    </div>
+  </div>
+
+  <div class="acc">
+    <button class="acc-head open" onclick="tog(this)">
+      <span class="atitle">Danh sách sản phẩm & Tỷ lệ hoa hồng <span class="atag">mẫu — cập nhật sau</span></span>
+      <svg class="aarr" viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M6 9l6 6 6-6"/></svg>
+    </button>
+    <div class="acc-body open">
+      <div class="kgrid">
+        <div class="kcard"><div class="kc-l">Cổ phiếu</div><div class="kc-v" style="color:var(--orange)">[X]%</div><div class="kc-s">Cập nhật sau</div></div>
+        <div class="kcard"><div class="kc-l">Phái sinh</div><div class="kc-v" style="color:var(--orange)">[X]%</div><div class="kc-s">Cập nhật sau</div></div>
+        <div class="kcard"><div class="kc-l">Trái phiếu</div><div class="kc-v" style="color:var(--orange)">[X]%</div><div class="kc-s">Cập nhật sau</div></div>
+        <div class="kcard"><div class="kc-l">Chứng quyền</div><div class="kc-v" style="color:var(--orange)">[X]%</div><div class="kc-s">Cập nhật sau</div></div>
+        <div class="kcard"><div class="kc-l">ETF</div><div class="kc-v" style="color:var(--orange)">[X]%</div><div class="kc-s">Cập nhật sau</div></div>
+        <div class="kcard"><div class="kc-l">Sản phẩm khác</div><div class="kc-v" style="color:var(--orange)">[X]%</div><div class="kc-s">Cập nhật sau</div></div>
+      </div>
+      <div class="krow" style="margin-top:.5rem"><div class="kdot"></div><div class="klbl">Lưu ý</div><div class="kval"><b>[X]%</b> là placeholder — sẽ thay bằng số liệu chính thức khi có file danh sách sản phẩm</div></div>
+    </div>
+  </div>
+
+  <div class="acc">
+    <button class="acc-head" onclick="tog(this)">
+      <span class="atitle">Điều kiện hưởng & Trường hợp đặc biệt <span class="atag">quan trọng</span></span>
+      <svg class="aarr" viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M6 9l6 6 6-6"/></svg>
+    </button>
+    <div class="acc-body">
+      <div class="krow"><div class="kdot"></div><div class="klbl">Điều kiện hưởng</div><div class="kval">Còn trong biên chế tại ngày cuối tháng (thời điểm chốt lương)</div></div>
+      <div class="krow"><div class="kdot"></div><div class="klbl">Nghỉ giữa tháng</div><div class="kval">Tính theo doanh số thực tế phát sinh đến ngày nghỉ việc chính thức</div></div>
+      <div class="krow"><div class="kdot"></div><div class="klbl">Chuyển khách hàng</div><div class="kval">Hoa hồng thuộc về môi giới <b>quản lý tại thời điểm giao dịch phát sinh</b></div></div>
+      <div class="krow"><div class="kdot"></div><div class="klbl">Khiếu nại lương</div><div class="kval">Gửi trong <b>5 ngày làm việc</b> sau nhận lương — điều chỉnh vào kỳ tiếp theo</div></div>
+    </div>
+  </div>
+
+  <div class="sep"><div class="sl"></div><span>Tool tính hoa hồng tháng</span><div class="sl"></div></div>
+
+  <div class="tcard">
+    <div class="thead2">
+      <div class="tico"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg></div>
+      <span>Nhập danh mục khách hàng — tính hoa hồng</span>
+    </div>
+    <div class="tbody2">
+      <div class="fgrid" style="margin-bottom:12px">
+        <div class="fg"><label>Tên môi giới</label><input type="text" id="cn" placeholder="VD: Nguyễn Văn A"></div>
+        <div class="fg"><label>Kỳ tính hoa hồng</label><input type="text" id="cp" placeholder="VD: Tháng 6/2025"></div>
+      </div>
+      <div class="ctw">
+        <table class="ctbl">
+          <thead><tr>
+            <th style="width:25%">Tên khách hàng</th>
+            <th style="width:26%">Sản phẩm</th>
+            <th style="width:12%">Tỷ lệ</th>
+            <th style="width:22%">Doanh số (VND)</th>
+            <th style="width:11%">Hoa hồng</th>
+            <th style="width:36px"></th>
+          </tr></thead>
+          <tbody id="cbody"></tbody>
+          <tfoot><tr class="tfoot-r">
+            <td colspan="4" style="text-align:right;color:var(--text2)">Tổng hoa hồng tháng</td>
+            <td class="tot" id="ctot">0đ</td><td></td>
+          </tr></tfoot>
+        </table>
+      </div>
+      <button class="addbtn" onclick="addRow()">+ Thêm dòng khách hàng / sản phẩm</button>
+      <button class="cbtn" onclick="calcComm()">Xuất bảng tóm tắt →</button>
+      <div class="sbox" id="sbox">
+        <div class="shead"><h4 id="stitle">Bảng hoa hồng</h4><button class="cpybtn" onclick="doCopy()">Sao chép</button></div>
+        <div class="sbody">
+          <div class="smeta">
+            <div><div class="sml">Môi giới</div><div class="smv" id="sn">—</div></div>
+            <div><div class="sml">Kỳ tính</div><div class="smv" id="sp2">—</div></div>
+            <div><div class="sml">Tổng hoa hồng</div><div class="smv" style="color:var(--orange)" id="st">—</div></div>
+          </div>
+          <table class="stbl">
+            <thead><tr><th>Khách hàng</th><th>Sản phẩm</th><th>Doanh số</th><th>Tỷ lệ</th><th>Hoa hồng</th></tr></thead>
+            <tbody id="stbody"></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════ TAB 2 — THỬ VIỆC ══════════════════ -->
+<div class="panel" id="p1">
+  <div class="banner">
+    <div class="banner-top">
+      <div class="bico" style="background:var(--green-bg);border:1px solid var(--green-bd)">
+        <svg viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="1.5"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>
+      </div>
+      <h3>Cơ chế Đánh giá Thử việc</h3>
+    </div>
+    <p>Đánh giá dựa trên <strong style="color:var(--green)">3 chỉ tiêu</strong> trong kỳ thử việc. Tổng điểm KPI đạt <strong style="color:var(--green)">≥ 80%</strong> là điều kiện để được xác nhận nhân viên chính thức.</p>
+    <div class="pills">
+      <span class="pill" style="background:var(--green-bg);border-color:var(--green-bd);color:#0A6035">Điều kiện pass: KPI ≥ 80%</span>
+      <span class="pill" style="background:var(--orange-dim);border-color:var(--orange-bd);color:#B04A10">NVDVCK Level 1 & Level 2</span>
+      <span class="pill" style="background:var(--blue-bg);border-color:var(--blue-bd);color:#0C447C">Tối đa có thể đạt: 135%</span>
+    </div>
+  </div>
+
+  <div class="acc">
+    <button class="acc-head open" onclick="tog(this)">
+      <span class="atitle">3 chỉ tiêu đánh giá & Tỷ trọng <span class="atag">có cap tối đa</span></span>
+      <svg class="aarr" viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M6 9l6 6 6-6"/></svg>
+    </button>
+    <div class="acc-body open">
+      <div class="kgrid">
+        <div class="kcard"><div class="kc-l">Số TK mở mới</div><div class="kc-v">30%</div><div class="kc-s">KPI: 10 TK · tối đa 30%</div></div>
+        <div class="kcard"><div class="kc-l">Số TK Active</div><div class="kc-v">40%</div><div class="kc-s">KPI: 5 TK · tối đa 45%</div></div>
+        <div class="kcard"><div class="kc-l">Doanh thu phí</div><div class="kc-v">30%</div><div class="kc-s">Tự PT · tối đa 60%</div></div>
+      </div>
+      <div class="krow" style="margin-top:.5rem"><div class="kdot"></div><div class="klbl">Doanh thu tính theo</div><div class="kval">Chỉ tính KH <b>tự phát triển</b> — không tính KH được phân bổ từ công ty</div></div>
+      <div class="krow"><div class="kdot"></div><div class="klbl">Vượt target</div><div class="kval">TK Active tối đa 45% · Doanh thu tối đa 60% — vượt thêm không được cộng điểm</div></div>
+    </div>
+  </div>
+
+  <div class="acc">
+    <button class="acc-head" onclick="tog(this)">
+      <span class="atitle">Target theo cấp bậc <span class="atag">2 level</span></span>
+      <svg class="aarr" viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M6 9l6 6 6-6"/></svg>
+    </button>
+    <div class="acc-body">
+      <div class="krow"><div class="kdot"></div><div class="klbl">NVDVCK Level 1</div><div class="kval">Target doanh thu phí: <b>12,500,000đ/tháng</b></div></div>
+      <div class="krow"><div class="kdot"></div><div class="klbl">NVDVCK Level 2</div><div class="kval">Target doanh thu phí: <b>30,000,000đ/tháng</b></div></div>
+      <div class="krow"><div class="kdot"></div><div class="klbl">TK mở mới & Active</div><div class="kval">Giống nhau cả 2 cấp: <b>10 TK mới</b> và <b>5 TK Active</b></div></div>
+    </div>
+  </div>
+
+  <div class="acc">
+    <button class="acc-head" onclick="tog(this)">
+      <span class="atitle">Kết quả & Hệ quả sau đánh giá <span class="atag">xử lý</span></span>
+      <svg class="aarr" viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M6 9l6 6 6-6"/></svg>
+    </button>
+    <div class="acc-body">
+      <div class="krow"><div class="kdot"></div><div class="klbl">KPI ≥ 80%</div><div class="kval"><span class="g">Đạt thử việc</span> — chuyển nhân viên chính thức, áp dụng cơ chế lương & hoa hồng tiêu chuẩn</div></div>
+      <div class="krow"><div class="kdot"></div><div class="klbl">KPI &lt; 80%</div><div class="kval"><span class="r">Chưa đạt</span> — Trưởng nhóm và HR thảo luận hướng xử lý (gia hạn / chấm dứt)</div></div>
+      <div class="krow"><div class="kdot"></div><div class="klbl">Thời điểm đánh giá</div><div class="kval">Cuối kỳ thử việc — Trưởng nhóm xác nhận kết quả trước khi gửi HR phê duyệt</div></div>
+    </div>
+  </div>
+
+  <div class="sep"><div class="sl"></div><span>Tool đánh giá thử việc</span><div class="sl"></div></div>
+
+  <div class="tcard">
+    <div class="thead2">
+      <div class="tico blue"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M9 11l3 3L22 4"/></svg></div>
+      <span>Tính kết quả thử việc</span>
+    </div>
+    <div class="tbody2">
+      <div style="margin-bottom:12px">
+        <div style="font-size:12px;font-weight:600;color:var(--text2);margin-bottom:8px">Vị trí thử việc</div>
+        <div class="rpills">
+          <div class="rpill on" data-val="1" onclick="setPL(this)">NVDVCK Level 1 — target 12.5tr</div>
+          <div class="rpill" data-val="2" onclick="setPL(this)">NVDVCK Level 2 — target 30tr</div>
+        </div>
+      </div>
+      <div class="fgrid">
+        <div class="fg"><label>Số TK mở mới (TK)</label><input type="number" id="ptk" placeholder="VD: 8" min="0" step="1"><span class="fh">KPI: 10 TK · tỷ trọng 30% · tối đa 30 điểm</span></div>
+        <div class="fg"><label>Số TK Active (TK)</label><input type="number" id="pact" placeholder="VD: 4" min="0" step="1"><span class="fh">KPI: 5 TK · tỷ trọng 40% · tối đa 45 điểm</span></div>
+      </div>
+      <div class="fg"><label>Doanh thu phí thực tế (VND) — chỉ KH tự phát triển</label><input type="number" id="pdt" placeholder="VD: 10,000,000" min="0"><span class="fh" id="pdth">KPI: 12,500,000đ (Level 1) · tỷ trọng 30% · tối đa 60 điểm</span></div>
+      <button class="cbtn" onclick="calcProb()">Đánh giá kết quả thử việc →</button>
+      <div class="rarea" id="pres">
+        <div style="display:flex;flex-direction:column;gap:8px;margin-bottom:.875rem" id="pbars"></div>
+        <div class="fbar" id="pfbar">
+          <div><div class="fl">Kết quả thử việc</div><div class="fv" id="pfv">—</div><div class="fs" id="pfs"></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════ TAB 3 — REVIEW ĐỊNH KỲ ══════════════════ -->
+<div class="panel" id="p2">
+
+  <!-- 1. TỔNG QUAN -->
+  <div class="banner">
+    <div class="banner-top">
+      <div class="bico" style="background:var(--blue-bg);border:1px solid var(--blue-bd)">
+        <svg viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="1.5"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+      </div>
+      <h3>Cơ chế Review Định kỳ — 6 tháng/lần</h3>
+    </div>
+    <p>Review là thời điểm chính thức xác định <strong style="color:var(--blue)">cấp bậc và mức thu nhập</strong> cho kỳ tiếp theo. Sau mỗi kỳ, môi giới có thể tăng hạng hoặc giảm hạng — kết quả có hiệu lực ngay từ kỳ tiếp theo.</p>
+    <div class="pills">
+      <span class="pill" style="background:var(--blue-bg);border-color:var(--blue-bd);color:#0C447C">Kỳ 1: Tháng 1 – 6</span>
+      <span class="pill" style="background:var(--blue-bg);border-color:var(--blue-bd);color:#0C447C">Kỳ 2: Tháng 7 – 12</span>
+      <span class="pill" style="background:var(--green-bg);border-color:var(--green-bd);color:#0A6035">Đối tượng: MGĐL / HĐLĐ ≥ 2 tháng tại kỳ đánh giá</span>
+      <span class="pill" style="background:var(--orange-dim);border-color:var(--orange-bd);color:#B04A10">Quan hệ careby: Client careby</span>
+    </div>
+  </div>
+
+  <!-- 2. THANG PHÂN LOẠI -->
+  <div class="acc">
+    <button class="acc-head open" onclick="tog(this)">
+      <span class="atitle">Thông tin cơ bản cần biết <span class="atag">trước khi review</span></span>
+      <svg class="aarr" viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M6 9l6 6 6-6"/></svg>
+    </button>
+    <div class="acc-body open">
+      <div class="krow"><div class="kdot"></div><div class="klbl">Hệ số thâm niên</div><div class="kval">Áp dụng với nhân sự <b>tuyển dụng mới</b> — tính từ ngày chính thức vào công ty</div></div>
+      <div class="krow"><div class="kdot"></div><div class="klbl">Sau kỳ đánh giá</div><div class="kval">Môi giới có thể <b>tăng hạng hoặc giảm hạng</b> — kết quả xếp hạng có hiệu lực cho kỳ tiếp theo</div></div>
+      <div class="krow"><div class="kdot"></div><div class="klbl">Mức thu nhập</div><div class="kval">Áp dụng theo title của vị trí trong <b>Phụ lục cơ chế 2018</b></div></div>
+      <div class="krow"><div class="kdot"></div><div class="klbl">Xem chi tiết</div><div class="kval"><a href="#" style="color:var(--blue);font-weight:500">Cơ chế 2025 xem tại đây</a> &nbsp;·&nbsp; <a href="#" style="color:var(--blue);font-weight:500">Cơ chế 2018 xem tại đây</a></div></div>
+    </div>
+  </div>
+
+  <div class="acc">
+    <button class="acc-head open" onclick="tog(this)">
+      <span class="atitle">Thang phân loại — Xác định level đạt được <span class="atag">4 nhóm</span></span>
+      <svg class="aarr" viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M6 9l6 6 6-6"/></svg>
+    </button>
+    <div class="acc-body open">
+      <div class="class-grid">
+
+        <div class="class-card" style="background:var(--green-bg);border-color:var(--green-bd)">
+          <div class="cc-header">
+            <span class="cc-badge" style="background:var(--green);color:#fff">Nhóm 1</span>
+            <span class="cc-title">Môi giới thỏa mãn DCare</span>
+          </div>
+          <div class="cc-body">
+            Áp dụng theo <b>kịch bản ngưỡng GTGT bình quân ngày toàn thị trường</b> theo từng kỳ đánh giá — Cơ chế 2025.
+          </div>
+          <div class="cc-metrics">
+            <span class="cc-metric" style="background:var(--green-bg);border-color:var(--green-bd);color:var(--green)">Chỉ tiêu: Doanh thu phí giao dịch</span>
+          </div>
+        </div>
+
+        <div class="class-card" style="background:var(--blue-bg);border-color:var(--blue-bd)">
+          <div class="cc-header">
+            <span class="cc-badge" style="background:var(--blue);color:#fff">Nhóm 2</span>
+            <span class="cc-title">Môi giới không thỏa mãn DCare</span>
+          </div>
+          <div class="cc-body">
+            Review theo <b>bộ 4 chỉ tiêu FCPL</b> — Cơ chế 2025.
+          </div>
+          <div class="cc-metrics">
+            <span class="cc-metric" style="background:var(--blue-bg);border-color:var(--blue-bd);color:var(--blue)">TOI</span>
+            <span class="cc-metric" style="background:var(--blue-bg);border-color:var(--blue-bd);color:var(--blue)">Doanh thu phí GD</span>
+            <span class="cc-metric" style="background:var(--blue-bg);border-color:var(--blue-bd);color:var(--blue)">Số SP TB/KH</span>
+            <span class="cc-metric" style="background:var(--blue-bg);border-color:var(--blue-bd);color:var(--blue)">Tỷ lệ KH GD bình quân tháng</span>
+          </div>
+        </div>
+
+        <div class="class-card" style="background:var(--gold-bg);border-color:var(--gold-bd)">
+          <div class="cc-header">
+            <span class="cc-badge" style="background:var(--gold);color:#fff">Nhóm 3</span>
+            <span class="cc-title">Môi giới cao cấp</span>
+          </div>
+          <div class="cc-body">
+            Áp dụng theo <b>Cơ chế 2018</b>.
+          </div>
+          <div class="cc-metrics">
+            <span class="cc-metric" style="background:var(--gold-bg);border-color:var(--gold-bd);color:var(--gold)">NAV trung bình</span>
+            <span class="cc-metric" style="background:var(--gold-bg);border-color:var(--gold-bd);color:var(--gold)">Mức phí GD trung bình</span>
+            <span class="cc-metric" style="background:var(--gold-bg);border-color:var(--gold-bd);color:var(--gold)">Doanh thu phí TB tối thiểu</span>
+          </div>
+        </div>
+
+        <div class="class-card" style="background:var(--red-bg);border-color:var(--red-bd)">
+          <div class="cc-header">
+            <span class="cc-badge" style="background:var(--red);color:#fff">Nhóm 4</span>
+            <span class="cc-title">Môi giới độc lập (MGĐL)</span>
+          </div>
+          <div class="cc-body">
+            Áp dụng khi môi giới <b>không thỏa mãn</b> các điều kiện của Nhóm 1, 2, 3.
+          </div>
+          <div class="cc-metrics">
+            <span class="cc-metric" style="background:var(--red-bg);border-color:var(--red-bd);color:var(--red)">Không đạt yêu cầu xếp hạng</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="acc">
+    <button class="acc-head" onclick="tog(this)">
+      <span class="atitle">Đề xuất ngoại lệ <span class="atag">2 trường hợp</span></span>
+      <svg class="aarr" viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M6 9l6 6 6-6"/></svg>
+    </button>
+    <div class="acc-body">
+      <div class="krow">
+        <div class="kdot"></div>
+        <div class="klbl">Gia hạn 1 kỳ</div>
+        <div class="kval">Chuyên viên Môi giới <b>không đạt Level 1</b> → được gia hạn thêm 1 kỳ đánh giá trước khi chuyển xuống cấp Môi giới độc lập</div>
+      </div>
+      <div class="krow">
+        <div class="kdot"></div>
+        <div class="klbl">Ngoại lệ trong kỳ</div>
+        <div class="kval">Môi giới <b>(kể cả nghỉ thai sản)</b> đáp ứng tối thiểu <b>4 CCCM</b> và đạt từ <b>95% KPI</b> cơ chế hiện hành → GĐ Kinh doanh có thể phê duyệt giữ hoặc tăng cấp bậc</div>
+      </div>
+      <div class="krow">
+        <div class="kdot"></div>
+        <div class="klbl">Ngoại lệ ngoài kỳ</div>
+        <div class="kval">Môi giới đáp ứng <b>4 CCCM</b> và được Trưởng phòng đề xuất → được đánh giá sớm hơn kỳ hạn theo quy định</div>
+      </div>
+      <div class="alert" style="background:var(--orange-dim);border-color:var(--orange-bd);color:var(--text2);margin-top:.625rem">
+        <b style="color:var(--orange)">Lưu ý:</b> Mọi đề xuất ngoại lệ phải được <b>Giám đốc Kinh doanh</b> phê duyệt chính thức trước khi có hiệu lực.
+      </div>
+    </div>
+  </div>
+
+  <!-- 3. TIMELINE -->
+  <div class="acc">
+    <button class="acc-head" onclick="tog(this)">
+      <span class="atitle">Timeline xử lý kết quả review <span class="atag">T → T+10</span></span>
+      <svg class="aarr" viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M6 9l6 6 6-6"/></svg>
+    </button>
+    <div class="acc-body">
+      <div class="timeline">
+        <div class="tl-item">
+          <div class="tl-left">
+            <div class="tl-dot" style="background:var(--blue-bg);border:2px solid var(--blue);color:var(--blue)">T</div>
+            <div class="tl-line"></div>
+          </div>
+          <div class="tl-content">
+            <div class="tl-day">Ngày 5 tháng kế tiếp sau khi kết thúc kỳ review</div>
+            <div class="tl-desc">Bộ phận <strong>CAPC</strong> gửi kết quả review chính thức đến các bộ phận liên quan</div>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-left">
+            <div class="tl-dot" style="background:var(--orange-dim);border:2px solid var(--orange);color:var(--orange)">T+3</div>
+            <div class="tl-line"></div>
+          </div>
+          <div class="tl-content">
+            <div class="tl-day">T + 3 ngày làm việc</div>
+            <div class="tl-desc"><strong>Trưởng phòng / Giám đốc</strong> gửi phản hồi thắc mắc hoặc đề xuất ngoại lệ (nếu có)</div>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-left">
+            <div class="tl-dot" style="background:var(--purple-bg);border:2px solid var(--purple);color:var(--purple)">T+6</div>
+            <div class="tl-line"></div>
+          </div>
+          <div class="tl-content">
+            <div class="tl-day">T + 6 ngày làm việc</div>
+            <div class="tl-desc">Review các đề xuất ngoại lệ — tổng hợp và <strong>trình Ban lãnh đạo</strong> phê duyệt</div>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-left">
+            <div class="tl-dot" style="background:var(--green-bg);border:2px solid var(--green);color:var(--green)">T+10</div>
+          </div>
+          <div class="tl-content">
+            <div class="tl-day">T + 10 ngày làm việc</div>
+            <div class="tl-desc">Cập nhật kết quả phê duyệt của Ban lãnh đạo — gửi <strong>kết quả cuối cùng</strong> cho bộ phận Nhân sự để thực hiện</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 4. TOOL TÍNH -->
+  <div class="sep"><div class="sl"></div><span>Tool xếp hạng level tháng này</span><div class="sl"></div></div>
+
+  <div class="tn-card">
+    <div class="tn-left">
+      <div class="tn-lbl">Hệ số thâm niên</div>
+      <div class="tn-val" id="tn-display">× 0.60</div>
+    </div>
+    <div class="tn-div"></div>
+    <div class="tn-opts">
+      <button class="tn-btn on" data-val="0.6" onclick="setTN(this)">≤ 6 tháng — 0.60</button>
+      <button class="tn-btn" data-val="0.85" onclick="setTN(this)">6 tháng – 1 năm — 0.85</button>
+      <button class="tn-btn" data-val="1" onclick="setTN(this)">> 1 năm — 1.00</button>
+    </div>
+  </div>
+
+  <div class="tcard">
+    <div class="thead2">
+      <div class="tico purple"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+      <span>Nhập chỉ tiêu thực tế — tính xếp hạng Level</span>
+    </div>
+    <div class="tbody2">
+      <div class="fgrid">
+        <div class="fg"><label>TOI TB/tháng (VND)</label><input type="number" id="toi" placeholder="VD: 36,000,000" min="0"><span class="fh">Target 40tr · tỷ trọng 25% · dùng cho L1+2</span></div>
+        <div class="fg"><label>Doanh thu phí TB/tháng (VND)</label><input type="number" id="dtp" placeholder="VD: 90,000,000" min="0"><span class="fh">Target 30tr · tỷ trọng 35% · dùng cho cả 3 nhóm</span></div>
+        <div class="fg"><label>Tỷ lệ KH giao dịch (%)</label><input type="number" id="khgd" placeholder="VD: 45" min="0" step="0.1"><span class="fh">Target 50% · tỷ trọng 20% · nhập số VD: 45</span></div>
+        <div class="fg"><label>Số SP TB/khách hàng</label><input type="number" id="sp" placeholder="VD: 2.5" min="0" step="0.1"><span class="fh">Target 3 · tỷ trọng 20% · dùng cho L1+2</span></div>
+        <div class="fg"><label>NAV TB/tháng (VND)</label><input type="number" id="nav" placeholder="VD: 25,000,000,000" min="0"><span class="fh">Chỉ dùng cho MGCC · L1: 18tỷ → L4: 50tỷ</span></div>
+        <div class="fg"><label>Mức phí giao dịch cơ sở (%)</label><input type="number" id="phi" placeholder="VD: 22" min="0" step="0.1"><span class="fh">Cần ≥ 22% mới xét nhóm MGCC</span></div>
+      </div>
+      <button class="cbtn" onclick="calcLevel()">Tính xếp hạng level →</button>
+      <div class="rarea" id="lres">
+        <div class="rgrid">
+          <div class="rc" id="bc1"><div class="rl">Nhóm L1 + L2</div><div class="rv" id="v1">—</div><div class="rd" id="d1"></div></div>
+          <div class="rc" id="bc2"><div class="rl">Nhóm L3 – L9</div><div class="rv" id="v2">—</div><div class="rd" id="d2"></div></div>
+          <div class="rc" id="bc3"><div class="rl">Nhóm MGCC</div><div class="rv" id="v3">—</div><div class="rd" id="d3"></div></div>
+        </div>
+        <div class="fbar" id="lfbar">
+          <div><div class="fl">Level xếp hạng cuối cùng</div><div class="fv" id="lfv">—</div><div class="fs" id="lfs"></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <p>Tài liệu nội bộ · Không phát hành ra bên ngoài · © 2025</p>
+  <span class="fpill">Internal Handbook 2025</span>
+</footer>
+</div>
+
+<script>
+var PRODS=[
+  {name:'Cổ phiếu',rate:0.0015},{name:'Phái sinh',rate:0.0010},
+  {name:'Trái phiếu',rate:0.0008},{name:'Chứng quyền',rate:0.0020},
+  {name:'ETF',rate:0.0005},{name:'Sản phẩm khác',rate:0.0010}
+];
+var rids=[],rid=0,pl=1,tn=0.6;
+
+function sw(i,el){
+  document.querySelectorAll('.panel').forEach(function(p){p.className='panel';});
+  document.querySelectorAll('.tb').forEach(function(b){b.className='tb';});
+  document.getElementById('p'+i).className='panel on';el.className='tb on';
+}
+function tog(btn){
+  var o=btn.classList.contains('open');
+  btn.className=o?'acc-head':'acc-head open';
+  btn.nextElementSibling.className=o?'acc-body':'acc-body open';
+}
+function fmtV(v){
+  if(!v||isNaN(v))return'0đ';
+  if(v>=1e9)return(v/1e9).toFixed(2).replace(/\.?0+$/,'')+'tỷ đ';
+  if(v>=1e6)return(v/1e6).toFixed(2).replace(/\.?0+$/,'')+'tr đ';
+  return Math.round(v).toLocaleString('vi-VN')+'đ';
+}
+function pct(r){return(r*100).toFixed(2)+'%';}
+function n(id){return parseFloat(document.getElementById(id).value)||0;}
+
+/* PAYOUT */
+function prodOpts(sel){
+  var h='<option value="">Chọn sản phẩm</option>';
+  PRODS.forEach(function(p){h+='<option value="'+p.name+'"'+(p.name===sel?' selected':'')+'>'+p.name+' ('+pct(p.rate)+')</option>';});
+  return h;
+}
+function addRow(kh,pr,ds){
+  var id='r'+rid++;
+  var tr=document.createElement('tr');tr.id=id;
+  tr.innerHTML='<td><input type="text" placeholder="Tên khách hàng" value="'+(kh||'')+'"></td>'
+    +'<td><select onchange="upRate(\''+id+'\')">'+prodOpts(pr||'')+'</select></td>'
+    +'<td class="rc2" id="'+id+'rt">—</td>'
+    +'<td><input type="number" placeholder="0" min="0" value="'+(ds||'')+'" oninput="calcRow(\''+id+'\')"></td>'
+    +'<td class="ac2" id="'+id+'am">0đ</td>'
+    +'<td class="dc2"><button class="dbtn" onclick="delRow(\''+id+'\')">×</button></td>';
+  document.getElementById('cbody').appendChild(tr);rids.push(id);
+  if(pr)upRate(id);upTotal();
+}
+function upRate(id){
+  var tr=document.getElementById(id),name=tr.querySelector('select').value;
+  var prod=PRODS.find(function(p){return p.name===name;});
+  document.getElementById(id+'rt').textContent=prod?pct(prod.rate):'—';calcRow(id);
+}
+function calcRow(id){
+  var tr=document.getElementById(id),name=tr.querySelector('select').value;
+  var prod=PRODS.find(function(p){return p.name===name;});
+  var ds=parseFloat(tr.querySelector('input[type=number]').value)||0;
+  document.getElementById(id+'am').textContent=fmtV(prod?ds*prod.rate:0);upTotal();
+}
+function delRow(id){
+  var t=document.getElementById(id);if(t)t.remove();
+  rids=rids.filter(function(r){return r!==id;});upTotal();
+}
+function upTotal(){
+  var tot=0;
+  rids.forEach(function(id){
+    var tr=document.getElementById(id);if(!tr)return;
+    var name=tr.querySelector('select').value;
+    var prod=PRODS.find(function(p){return p.name===name;});
+    var ds=parseFloat(tr.querySelector('input[type=number]').value)||0;
+    if(prod)tot+=ds*prod.rate;
+  });
+  document.getElementById('ctot').textContent=fmtV(tot);
+}
+function calcComm(){
+  var name=document.getElementById('cn').value||'—';
+  var period=document.getElementById('cp').value||'—';
+  var tot=0,rows=[];
+  rids.forEach(function(id){
+    var tr=document.getElementById(id);if(!tr)return;
+    var kh=tr.querySelector('input[type=text]').value||'—';
+    var sel=tr.querySelector('select');
+    var prod=PRODS.find(function(p){return p.name===sel.value;});
+    var ds=parseFloat(tr.querySelector('input[type=number]').value)||0;
+    var amt=prod?ds*prod.rate:0;tot+=amt;
+    rows.push({kh:kh,prod:sel.value||'—',rate:prod?pct(prod.rate):'—',ds:ds,amt:amt});
+  });
+  document.getElementById('sn').textContent=name;
+  document.getElementById('sp2').textContent=period;
+  document.getElementById('st').textContent=fmtV(tot);
+  document.getElementById('stitle').textContent='Hoa hồng — '+name+' — '+period;
+  var h='';
+  rows.forEach(function(r){h+='<tr><td>'+r.kh+'</td><td>'+r.prod+'</td><td>'+fmtV(r.ds)+'</td><td>'+r.rate+'</td><td style="color:var(--green);font-weight:600">'+fmtV(r.amt)+'</td></tr>';});
+  h+='<tr class="str"><td colspan="4">Tổng cộng</td><td>'+fmtV(tot)+'</td></tr>';
+  document.getElementById('stbody').innerHTML=h;
+  var sb=document.getElementById('sbox');sb.style.display='block';
+  setTimeout(function(){sb.scrollIntoView({behavior:'smooth',block:'nearest'});},50);
+}
+function doCopy(){
+  var nm=document.getElementById('sn').textContent,p=document.getElementById('sp2').textContent,t=document.getElementById('st').textContent;
+  var lines=['BẢNG HOA HỒNG','Môi giới: '+nm+' | Kỳ: '+p,'─'.repeat(50),'Khách hàng\tSản phẩm\tDoanh số\tTỷ lệ\tHoa hồng'];
+  document.querySelectorAll('#stbody tr:not(.str)').forEach(function(tr){lines.push(Array.from(tr.querySelectorAll('td')).map(function(td){return td.textContent.trim();}).join('\t'));});
+  lines.push('─'.repeat(50),'TỔNG: '+t);
+  navigator.clipboard.writeText(lines.join('\n')).then(function(){
+    var b=document.querySelector('.cpybtn');b.textContent='✓ Đã sao chép';
+    setTimeout(function(){b.textContent='Sao chép';},2000);
+  });
+}
+
+/* THỬ VIỆC */
+function setPL(el){
+  pl=parseInt(el.dataset.val);
+  document.querySelectorAll('#p1 .rpill').forEach(function(p){p.className='rpill'+(p===el?' on':'');});
+  document.getElementById('pdth').textContent='KPI: '+(pl===1?'12,500,000đ (Level 1)':'30,000,000đ (Level 2)')+' · tỷ trọng 30% · tối đa 60 điểm';
+}
+function calcProb(){
+  var tk=n('ptk'),act=n('pact'),dt=n('pdt'),dtT=pl===1?12500000:30000000;
+  var sTK=Math.min(tk/10,1)*30,sAct=Math.min(act/5,1.125)*40,sDT=Math.min(dt/dtT,2)*30;
+  var total=sTK+sAct+sDT;
+  var bars=[
+    {lbl:'Số TK mở mới',score:sTK,max:30,pct:Math.min(tk/10*100,100),c:'#E8621A'},
+    {lbl:'Số TK Active',score:sAct,max:45,pct:Math.min(act/5*100,112.5),c:'#185FA5'},
+    {lbl:'Doanh thu phí',score:sDT,max:60,pct:Math.min(dt/dtT*100,200),c:'#0F8A4A'},
+  ];
+  var h='';
+  bars.forEach(function(b){
+    var fw=Math.min(b.pct/200*100,100);
+    h+='<div class="bwrap"><div class="bmeta"><span style="font-size:12px;font-weight:500;color:var(--text)">'+b.lbl+'</span><span style="color:'+b.c+';font-weight:600">'+b.score.toFixed(1)+' / '+b.max+' điểm</span></div>'
+      +'<div class="bbg"><div class="bfill" style="width:'+fw+'%;background:'+b.c+'"></div></div></div>';
+  });
+  document.getElementById('pbars').innerHTML=h;
+  var pass=total>=80;
+  document.getElementById('pfv').textContent=pass?'Đạt thử việc':'Chưa đạt thử việc';
+  document.getElementById('pfs').textContent='Tổng điểm KPI: '+total.toFixed(1)+'% '+(pass?'(≥ 80% ✓)':'(cần ≥ 80%)');
+  document.getElementById('pfbar').className='fbar '+(pass?'pass':'fail');
+  document.getElementById('pres').style.display='block';
+}
+
+/* XẾP HẠNG LEVEL */
+function setTN(el){
+  tn=parseFloat(el.dataset.val);
+  document.querySelectorAll('.tn-btn').forEach(function(b){b.className='tn-btn'+(b===el?' on':'');});
+  document.getElementById('tn-display').textContent='× '+tn.toFixed(2);
+}
+function toScore(s){
+  if(!s||s==='Chưa đạt'||s==='Không đủ ĐK')return 0;
+  if(s.startsWith('MGCC'))return 9+parseInt(s.slice(-1));
+  return parseInt(s.slice(-1));
+}
+function fromScore(s){
+  if(s<=0)return'Chưa đạt';
+  if(s>=10)return'MGCC Level '+(s-9);
+  return'MG Level '+s;
+}
+function calcL12(toi,dtp,khgd,sp){
+  var t=Math.min(toi/40000000,1),d=Math.min(dtp/30000000,1),k=Math.min(khgd/50,1),s=Math.min(sp/3,1);
+  var kpi=t*.25+d*.35+k*.20+s*.20,p=(kpi*100).toFixed(1);
+  if(kpi>=.9)return{lv:'MG Level 2',det:'KPI tổng hợp: '+p+'%'};
+  if(kpi>=.8)return{lv:'MG Level 1',det:'KPI tổng hợp: '+p+'%'};
+  return{lv:'Chưa đạt',det:'KPI: '+p+'% (cần ≥ 80%)'};
+}
+function calcL39(dtp,b){
+  var d=dtp/b;
+  var tiers=[[900000000,'MG Level 9'],[500000000,'MG Level 8'],[240000000,'MG Level 7'],
+             [160000000,'MG Level 6'],[90000000,'MG Level 5'],[50000000,'MG Level 4'],[40000000,'MG Level 3']];
+  for(var i=0;i<tiers.length;i++)if(d>=tiers[i][0])return{lv:tiers[i][1],det:'DTP quy đổi: '+fmtV(Math.round(d))};
+  return{lv:'Chưa đạt',det:fmtV(Math.round(d))+' (cần ≥ 40tr)'};
+}
+function calcMGCC(phi,dtp,nav,b){
+  if(phi<22)return{lv:'Không đủ ĐK',det:'Phí '+phi+'% < 22%'};
+  var d=dtp/b,ld=0,ln=0;
+  if(d>=240000000)ld=4;else if(d>=160000000)ld=3;else if(d>=90000000)ld=2;else if(d>=50000000)ld=1;
+  if(nav>=50000000000)ln=4;else if(nav>=40000000000)ln=3;else if(nav>=30000000000)ln=2;else if(nav>=18000000000)ln=1;
+  var lv=Math.min(ld,ln);
+  return lv===0?{lv:'Chưa đạt',det:'DTP lv'+ld+' · NAV lv'+ln}:{lv:'MGCC Level '+lv,det:'DTP lv'+ld+' · NAV lv'+ln+' → min='+lv};
+}
+function setBox(bcId,vid,did,obj){
+  var ok=obj.lv!=='Chưa đạt'&&obj.lv!=='Không đủ ĐK';
+  document.getElementById(bcId).className='rc '+(ok?'hit':'miss');
+  var ve=document.getElementById(vid);
+  ve.style.color=ok?'var(--green)':'var(--red)';ve.textContent=obj.lv;
+  document.getElementById(did).textContent=obj.det;
+}
+function calcLevel(){
+  var g1=calcL12(n('toi'),n('dtp'),n('khgd'),n('sp'));
+  var g2=calcL39(n('dtp'),tn);
+  var g3=calcMGCC(n('phi'),n('dtp'),n('nav'),tn);
+  setBox('bc1','v1','d1',g1);setBox('bc2','v2','d2',g2);setBox('bc3','v3','d3',g3);
+  var best=Math.max(toScore(g1.lv),toScore(g2.lv),toScore(g3.lv));
+  document.getElementById('lfv').textContent=fromScore(best);
+  document.getElementById('lfs').textContent=best>0?'Áp dụng cơ chế hoa hồng theo level này':'Liên hệ Trưởng nhóm để được hỗ trợ';
+  var fc=document.getElementById('lfbar');
+  fc.className=best>=10?'fbar mgcc':best>0?'fbar lvl':'fbar';
+  document.getElementById('lres').style.display='block';
+  setTimeout(function(){document.getElementById('lres').scrollIntoView({behavior:'smooth',block:'nearest'});},50);
+}
+
+addRow('','','');
+</script>
+</body>
+</html>
