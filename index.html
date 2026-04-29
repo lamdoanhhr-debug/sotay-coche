@@ -499,7 +499,7 @@ footer p{font-size:12px;color:var(--text3)}
         <div class="class-card" style="background:var(--green-bg);border-color:var(--green-bd)">
           <div class="cc-header">
             <span class="cc-badge" style="background:var(--green);color:#fff">Nhóm 1</span>
-            <span class="cc-title">Môi giới thỏa mãn DCare</span>
+            <span class="cc-title">Môi giới thỏa mãn DCare (Level 3 - Level 9)</span>
           </div>
           <div class="cc-body">
             Áp dụng theo <b>kịch bản ngưỡng GTGT bình quân ngày toàn thị trường</b> theo từng kỳ đánh giá — Cơ chế 2025.
@@ -512,7 +512,7 @@ footer p{font-size:12px;color:var(--text3)}
         <div class="class-card" style="background:var(--blue-bg);border-color:var(--blue-bd)">
           <div class="cc-header">
             <span class="cc-badge" style="background:var(--blue);color:#fff">Nhóm 2</span>
-            <span class="cc-title">Môi giới không thỏa mãn DCare</span>
+            <span class="cc-title">Môi giới không thỏa mãn DCare (Level 1 - Level 2)</span>
           </div>
           <div class="cc-body">
             Review theo <b>bộ 4 chỉ tiêu FCPL</b> — Cơ chế 2025.
@@ -663,7 +663,7 @@ footer p{font-size:12px;color:var(--text3)}
         <div class="fg"><label>Tỷ lệ KH giao dịch (%)</label><input type="number" id="khgd" placeholder="VD: 45" min="0" step="0.1"><span class="fh">Target 50% · tỷ trọng 20% · nhập số VD: 45</span></div>
         <div class="fg"><label>Số SP TB/khách hàng</label><input type="number" id="sp" placeholder="VD: 2.5" min="0" step="0.1"><span class="fh">Target 3 · tỷ trọng 20% · dùng cho L1+2</span></div>
         <div class="fg"><label>NAV TB/tháng (VND)</label><input type="number" id="nav" placeholder="VD: 25,000,000,000" min="0"><span class="fh">Chỉ dùng cho MGCC · L1: 18tỷ → L4: 50tỷ</span></div>
-        <div class="fg"><label>Mức phí giao dịch cơ sở (%)</label><input type="number" id="phi" placeholder="VD: 22" min="0" step="0.1"><span class="fh">Cần ≥ 22% mới xét nhóm MGCC</span></div>
+        <div class="fg"><label>Mức phí giao dịch cơ sở (%)</label><input type="number" id="phi" placeholder="VD: 0.22%" min="0" step="0.1"><span class="fh">Cần ≥ 0.22% mới xét nhóm MGCC</span></div>
       </div>
       <button class="cbtn" onclick="calcLevel()">Tính xếp hạng level →</button>
       <div class="rarea" id="lres">
@@ -852,7 +852,7 @@ function calcL39(dtp,b){
   return{lv:'Chưa đạt',det:fmtV(Math.round(d))+' (cần ≥ 40tr)'};
 }
 function calcMGCC(phi,dtp,nav,b){
-  if(phi<22)return{lv:'Không đủ ĐK',det:'Phí '+phi+'% < 22%'};
+  if(phi<0.22)return{lv:'Không đủ ĐK',det:'Phí '+phi+'% < 0.22%'};
   var d=dtp/b,ld=0,ln=0;
   if(d>=240000000)ld=4;else if(d>=160000000)ld=3;else if(d>=90000000)ld=2;else if(d>=50000000)ld=1;
   if(nav>=50000000000)ln=4;else if(nav>=40000000000)ln=3;else if(nav>=30000000000)ln=2;else if(nav>=18000000000)ln=1;
