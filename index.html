@@ -247,6 +247,7 @@ footer p{font-size:12px;color:var(--text3)}
     <h1>Cơ Chế <em>Kinh Doanh</em><br>Môi Giới Chứng Khoán</h1>
     <p class="hdesc">3 cơ chế cốt lõi: Payout · Đánh giá thử việc · Review định kỳ — hiểu nhanh, áp dụng ngay.</p>
   </div>
+  <span class="vpill">Phiên bản 2025</span>
 </header>
 
 <div class="tab-nav">
@@ -257,87 +258,337 @@ footer p{font-size:12px;color:var(--text3)}
 
 <!-- ══════════════════ TAB 1 — PAYOUT ══════════════════ -->
 <div class="panel on" id="p0">
+
   <div class="banner">
     <div class="banner-top">
       <div class="bico" style="background:var(--orange-dim);border:1px solid var(--orange-bd)">
         <svg viewBox="0 0 24 24" fill="none" stroke="var(--orange)" stroke-width="1.5"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
       </div>
-      <h3>Cơ chế Payout — Hoa hồng theo sản phẩm</h3>
+      <h3>Cơ chế Payout — Find · Win · Serve · Keep</h3>
     </div>
-    <p>Hoa hồng được ghi nhận <strong style="color:var(--orange)">Theo nhiệm vụ Find Win Serve Keep</strong>. Nhập danh mục khách hàng để hệ thống tự tính tổng hoa hồng tháng.</p>
+    <p>Hoa hồng được chi trả theo <strong style="color:var(--orange)">4 nhiệm vụ: Find · Win · Serve · Keep</strong>. Mỗi sản phẩm áp dụng một số nhiệm vụ nhất định với công thức và đầu vào khác nhau. Tỷ lệ % tra cứu trong file cơ chế nội bộ.</p>
     <div class="pills">
-      <span class="pill" style="background:var(--orange-dim);border-color:var(--orange-bd);color:#B04A10">Thời gian thanh toán: Chậm nhất ngày 15 tháng kế</span>
+      <span class="pill" style="background:var(--orange-dim);border-color:var(--orange-bd);color:#B04A10">Thanh toán: ngày 10 tháng kế</span>
       <span class="pill" style="background:var(--green-bg);border-color:var(--green-bd);color:#0A6035">Áp dụng: toàn bộ Môi giới</span>
-      <span class="pill" style="background:var(--blue-bg);border-color:var(--blue-bd);color:#0C447C">Kỳ tính: theo tháng</span>
+      <span class="pill" style="background:var(--blue-bg);border-color:var(--blue-bd);color:#0C447C">Chốt số: cuối tháng</span>
     </div>
   </div>
 
+  <!-- FWSK explanation -->
   <div class="acc">
     <button class="acc-head open" onclick="tog(this)">
-      <span class="atitle"> Nguyên tắc tính hoa hồng <a href="https://kms.ipas.com.vn/post/bang-tong-hop-tinh-nsr-toi-va-luong-kinh-doanh.2d3bf8d7-cd89-46cf-b68e-3ac7cdb142a2" target="_blank" class="atag">Xem chi tiết cách tính Tại đây</a></span>
+      <span class="atitle">Ý nghĩa 4 nhiệm vụ FWSK <span class="atag">nguyên tắc chung</span></span>
       <svg class="aarr" viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M6 9l6 6 6-6"/></svg>
     </button>
     <div class="acc-body open">
-      <div class="krow"><div class="kdot"></div><div class="klbl">Các thức xác định </div><div class="kval">Theo nhiệm vụ Find Win Serve Keep</div></div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:.5rem">
+        <div style="background:#FFF0E8;border:1px solid #FADCC8;border-radius:9px;padding:.875rem 1rem">
+          <div style="font-size:11px;font-weight:700;color:#B04A10;letter-spacing:.06em;margin-bottom:4px">F — FIND</div>
+          <div style="font-size:13px;color:var(--text);font-weight:600;margin-bottom:3px">Tìm kiếm & Phát triển KH mới</div>
+          <div style="font-size:12px;color:var(--text2)">Thưởng khi đưa khách hàng mới vào sử dụng sản phẩm lần đầu</div>
+        </div>
+        <div style="background:#EAF7F1;border:1px solid #B6E8D0;border-radius:9px;padding:.875rem 1rem">
+          <div style="font-size:11px;font-weight:700;color:#0A6035;letter-spacing:.06em;margin-bottom:4px">W — WIN</div>
+          <div style="font-size:13px;color:var(--text);font-weight:600;margin-bottom:3px">Chốt giao dịch thành công</div>
+          <div style="font-size:12px;color:var(--text2)">Thưởng theo doanh thu/giá trị giao dịch thực tế phát sinh trong kỳ</div>
+        </div>
+        <div style="background:#E6F1FB;border:1px solid #B5D4F4;border-radius:9px;padding:.875rem 1rem">
+          <div style="font-size:11px;font-weight:700;color:#0C447C;letter-spacing:.06em;margin-bottom:4px">S — SERVE</div>
+          <div style="font-size:13px;color:var(--text);font-weight:600;margin-bottom:3px">Phục vụ & Chăm sóc KH</div>
+          <div style="font-size:12px;color:var(--text2)">Thưởng theo doanh thu dịch vụ phát sinh từ danh mục KH đang quản lý</div>
+        </div>
+        <div style="background:#F2EDFB;border:1px solid #D4C2F0;border-radius:9px;padding:.875rem 1rem">
+          <div style="font-size:11px;font-weight:700;color:#4A1F80;letter-spacing:.06em;margin-bottom:4px">K — KEEP</div>
+          <div style="font-size:13px;color:var(--text);font-weight:600;margin-bottom:3px">Giữ chân & Phát triển danh mục</div>
+          <div style="font-size:12px;color:var(--text2)">Thưởng theo giá trị tài sản/danh mục KH duy trì hoặc tăng trưởng</div>
+        </div>
+      </div>
+      <div class="krow" style="margin-top:.375rem"><div class="kdot"></div><div class="klbl">Hoa hồng = </div><div class="kval">Giá trị đầu vào × Tỷ lệ % (tra file cơ chế nội bộ) — tính riêng cho từng nhiệm vụ rồi cộng lại</div></div>
     </div>
   </div>
 
+  <!-- Product Groups -->
   <div class="acc">
-    <button class="acc-head" onclick="tog(this)">
-      <span class="atitle">Điều kiện hưởng</span>
+    <button class="acc-head open" onclick="tog(this)">
+      <span class="atitle">Danh sách sản phẩm & Nhiệm vụ FWSK <span class="atag">tra cứu theo nhóm</span></span>
       <svg class="aarr" viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M6 9l6 6 6-6"/></svg>
     </button>
-    <div class="acc-body">
-      <div class="krow"><div class="kdot"></div><div class="klbl">Nghỉ giữa tháng</div><div class="kval">Tính theo doanh số thực tế phát sinh đến ngày nghỉ việc chính thức</div></div>
-      <div class="krow"><div class="kdot"></div><div class="klbl">Chuyển khách hàng</div><div class="kval">Hoa hồng thuộc về môi giới <b>quản lý tại thời điểm giao dịch phát sinh</b></div></div>
-      <div class="krow"><div class="kdot"></div><div class="klbl">Khiếu nại lương</div><div class="kval">Gửi trong <b>13 ngày làm việc đầu tháng</b> sau nhận lương — điều chỉnh vào kỳ tiếp theo</div></div>
+    <div class="acc-body open">
+      <style>
+        .pg{margin-bottom:1.25rem}
+        .pg:last-child{margin-bottom:0}
+        .pg-head{display:flex;align-items:center;gap:10px;margin-bottom:.625rem}
+        .pg-badge{font-size:11px;font-weight:600;padding:4px 13px;border-radius:100px;border:1px solid}
+        .pg-desc{font-size:12px;color:var(--text3)}
+        .pg-list{display:flex;flex-direction:column;gap:5px}
+        .pc{background:var(--surface);border:1px solid var(--border);border-radius:var(--Rs);overflow:hidden}
+        .pc-head{padding:9px 13px;display:flex;align-items:center;justify-content:space-between;cursor:pointer;gap:10px}
+        .pc-head:hover{background:var(--surface2)}
+        .pc-left{display:flex;align-items:center;gap:10px;flex-wrap:wrap;flex:1}
+        .pc-name{font-size:13px;font-weight:500;color:var(--text)}
+        .pc-tags{display:flex;gap:4px;flex-wrap:wrap}
+        .pc-tag{font-size:11px;font-weight:500;padding:2px 8px;border-radius:100px;border:1px solid}
+        .pc-none{font-size:11px;color:var(--text3);font-style:italic}
+        .pc-arr{width:13px;height:13px;stroke:var(--text3);transition:transform .15s;flex-shrink:0}
+        .pc-body{display:none;border-top:1px solid var(--border);padding:9px 13px;background:var(--white)}
+        .pc-body.open{display:block}
+        .pc-row{display:flex;gap:8px;align-items:flex-start;padding:5px 0;border-bottom:1px solid var(--border)}
+        .pc-row:last-child{border-bottom:none;padding-bottom:0}
+        .pc-type{font-size:11px;font-weight:500;padding:2px 8px;border-radius:100px;border:1px solid;white-space:nowrap;flex-shrink:0;margin-top:1px}
+        .pc-hint{font-size:12px;color:var(--text2);line-height:1.5}
+      </style>
+
+      <!-- DTrade -->
+      <div class="pg">
+        <div class="pg-head">
+          <span class="pg-badge" style="background:var(--blue-bg);border-color:var(--blue-bd);color:var(--blue)">DTrade</span>
+          <span class="pg-desc">Giao dịch chứng khoán cơ sở & phái sinh</span>
+        </div>
+        <div class="pg-list">
+
+          <div class="pc">
+            <div class="pc-head" onclick="togPc(this)">
+              <div class="pc-left">
+                <span class="pc-name">Giao dịch cơ sở</span>
+                <div class="pc-tags">
+                  <span class="pc-tag" style="background:#FFF0E8;border-color:#FADCC8;color:#B04A10">F</span>
+                  <span class="pc-tag" style="background:#EAF7F1;border-color:#B6E8D0;color:#0A6035">W</span>
+                  <span class="pc-tag" style="background:#EAF7F1;border-color:#B6E8D0;color:#0A6035">W-Back</span>
+                  <span class="pc-tag" style="background:#E6F1FB;border-color:#B5D4F4;color:#0C447C">S</span>
+                  <span class="pc-tag" style="background:#F2EDFB;border-color:#D4C2F0;color:#4A1F80">K</span>
+                </div>
+              </div>
+              <svg class="pc-arr" viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M6 9l6 6 6-6"/></svg>
+            </div>
+            <div class="pc-body">
+              <div class="pc-row"><span class="pc-type" style="background:#FFF0E8;border-color:#FADCC8;color:#B04A10">Find</span><span class="pc-hint">Doanh thu thuần × Tỷ lệ %</span></div>
+              <div class="pc-row"><span class="pc-type" style="background:#EAF7F1;border-color:#B6E8D0;color:#0A6035">Win</span><span class="pc-hint">Doanh thu thuần × Tỷ lệ %</span></div>
+              <div class="pc-row"><span class="pc-type" style="background:#EAF7F1;border-color:#B6E8D0;color:#0A6035">Win-Back</span><span class="pc-hint">Doanh thu thuần × Tỷ lệ %</span></div>
+              <div class="pc-row"><span class="pc-type" style="background:#E6F1FB;border-color:#B5D4F4;color:#0C447C">Serve</span><span class="pc-hint">Doanh thu thuần × Tỷ lệ %</span></div>
+              <div class="pc-row"><span class="pc-type" style="background:#F2EDFB;border-color:#D4C2F0;color:#4A1F80">Keep</span><span class="pc-hint">Doanh thu thuần × Tỷ lệ %</span></div>
+            </div>
+          </div>
+
+          <div class="pc">
+            <div class="pc-head" onclick="togPc(this)">
+              <div class="pc-left">
+                <span class="pc-name">Margin - T10</span>
+                <div class="pc-tags">
+                  <span class="pc-tag" style="background:#FFF0E8;border-color:#FADCC8;color:#B04A10">F</span>
+                  <span class="pc-tag" style="background:#EAF7F1;border-color:#B6E8D0;color:#0A6035">W</span>
+                  <span class="pc-tag" style="background:#E6F1FB;border-color:#B5D4F4;color:#0C447C">S</span>
+                  <span class="pc-tag" style="background:#F2EDFB;border-color:#D4C2F0;color:#4A1F80">K</span>
+                </div>
+              </div>
+              <svg class="pc-arr" viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M6 9l6 6 6-6"/></svg>
+            </div>
+            <div class="pc-body">
+              <div class="pc-row"><span class="pc-type" style="background:#FFF0E8;border-color:#FADCC8;color:#B04A10">Find</span><span class="pc-hint">Doanh thu thuần × Tỷ lệ %</span></div>
+              <div class="pc-row"><span class="pc-type" style="background:#EAF7F1;border-color:#B6E8D0;color:#0A6035">Win</span><span class="pc-hint">Doanh thu thuần × Tỷ lệ %</span></div>
+              <div class="pc-row"><span class="pc-type" style="background:#E6F1FB;border-color:#B5D4F4;color:#0C447C">Serve</span><span class="pc-hint">Doanh thu thuần × Tỷ lệ %</span></div>
+              <div class="pc-row"><span class="pc-type" style="background:#F2EDFB;border-color:#D4C2F0;color:#4A1F80">Keep</span><span class="pc-hint">Doanh thu thuần × Tỷ lệ %</span></div>
+            </div>
+          </div>
+
+          <div class="pc">
+            <div class="pc-head" onclick="togPc(this)">
+              <div class="pc-left">
+                <span class="pc-name">Giao dịch phái sinh</span>
+                <div class="pc-tags">
+                  <span class="pc-tag" style="background:#E6F1FB;border-color:#B5D4F4;color:#0C447C">S</span>
+                </div>
+              </div>
+              <svg class="pc-arr" viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M6 9l6 6 6-6"/></svg>
+            </div>
+            <div class="pc-body">
+              <div class="pc-row"><span class="pc-type" style="background:#E6F1FB;border-color:#B5D4F4;color:#0C447C">Serve</span><span class="pc-hint">Doanh thu thuần × Tỷ lệ %</span></div>
+            </div>
+          </div>
+
+          <div class="pc">
+            <div class="pc-head" style="cursor:default">
+              <div class="pc-left">
+                <span class="pc-name">Chứng quyền</span>
+                <span class="pc-none">Không có payout</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="pc">
+            <div class="pc-head" style="cursor:default">
+              <div class="pc-left">
+                <span class="pc-name">Dcash Grow</span>
+                <span class="pc-none">Không có payout</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- DInvest -->
+      <div class="pg">
+        <div class="pg-head">
+          <span class="pg-badge" style="background:var(--green-bg);border-color:var(--green-bd);color:var(--green)">DInvest</span>
+          <span class="pg-desc">Trái phiếu, quỹ mở và các sản phẩm đầu tư</span>
+        </div>
+        <div class="pg-list">
+
+          <div class="pc">
+            <div class="pc-head" onclick="togPc(this)">
+              <div class="pc-left">
+                <span class="pc-name">Dbond</span>
+                <div class="pc-tags">
+                  <span class="pc-tag" style="background:#EAF7F1;border-color:#B6E8D0;color:#0A6035">W</span>
+                  <span class="pc-tag" style="background:#F2EDFB;border-color:#D4C2F0;color:#4A1F80">K</span>
+                </div>
+              </div>
+              <svg class="pc-arr" viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M6 9l6 6 6-6"/></svg>
+            </div>
+            <div class="pc-body">
+              <div class="pc-row"><span class="pc-type" style="background:#EAF7F1;border-color:#B6E8D0;color:#0A6035">Win</span><span class="pc-hint">Giá trị mua của KH × Tỷ lệ %</span></div>
+              <div class="pc-row"><span class="pc-type" style="background:#F2EDFB;border-color:#D4C2F0;color:#4A1F80">Keep</span><span class="pc-hint">Giá trị mua của KH × Tỷ lệ %</span></div>
+            </div>
+          </div>
+
+          <div class="pc">
+            <div class="pc-head" onclick="togPc(this)">
+              <div class="pc-left">
+                <span class="pc-name">Dmoney plus</span>
+                <div class="pc-tags">
+                  <span class="pc-tag" style="background:#FFF0E8;border-color:#FADCC8;color:#B04A10">F</span>
+                  <span class="pc-tag" style="background:#F2EDFB;border-color:#D4C2F0;color:#4A1F80">K</span>
+                </div>
+              </div>
+              <svg class="pc-arr" viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M6 9l6 6 6-6"/></svg>
+            </div>
+            <div class="pc-body">
+              <div class="pc-row"><span class="pc-type" style="background:#FFF0E8;border-color:#FADCC8;color:#B04A10">Find</span><span class="pc-hint">Giá trị nắm giữ × Tỷ lệ %</span></div>
+              <div class="pc-row"><span class="pc-type" style="background:#F2EDFB;border-color:#D4C2F0;color:#4A1F80">Keep</span><span class="pc-hint">Giá trị nắm giữ × Tỷ lệ %</span></div>
+            </div>
+          </div>
+
+          <div class="pc">
+            <div class="pc-head" onclick="togPc(this)">
+              <div class="pc-left">
+                <span class="pc-name">CCQ Quỹ ngoài (VCBF · Vinacapital · Eastspring)</span>
+                <div class="pc-tags">
+                  <span class="pc-tag" style="background:#FFF0E8;border-color:#FADCC8;color:#B04A10">F</span>
+                  <span class="pc-tag" style="background:#EAF7F1;border-color:#B6E8D0;color:#0A6035">W</span>
+                  <span class="pc-tag" style="background:#F2EDFB;border-color:#D4C2F0;color:#4A1F80">K</span>
+                </div>
+              </div>
+              <svg class="pc-arr" viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M6 9l6 6 6-6"/></svg>
+            </div>
+            <div class="pc-body">
+              <div class="pc-row"><span class="pc-type" style="background:#FFF0E8;border-color:#FADCC8;color:#B04A10">Find</span><span class="pc-hint">Tổng giá trị mua CCQ phát sinh trong kỳ × Tỷ lệ %</span></div>
+              <div class="pc-row"><span class="pc-type" style="background:#EAF7F1;border-color:#B6E8D0;color:#0A6035">Win</span><span class="pc-hint">Tổng giá trị mua CCQ phát sinh trong kỳ × Tỷ lệ %</span></div>
+              <div class="pc-row"><span class="pc-type" style="background:#F2EDFB;border-color:#D4C2F0;color:#4A1F80">Keep</span><span class="pc-hint">(Giá trị CCQ cuối kỳ – Giá trị mua trong kỳ) × Tỷ lệ %</span></div>
+            </div>
+          </div>
+
+          <div class="pc">
+            <div class="pc-head" onclick="togPc(this)">
+              <div class="pc-left">
+                <span class="pc-name">CCQ - VNDAF · VNDBF · VNDCF · VNDAFS · VNVALUE</span>
+                <div class="pc-tags">
+                  <span class="pc-tag" style="background:#F2EDFB;border-color:#D4C2F0;color:#4A1F80">K</span>
+                </div>
+              </div>
+              <svg class="pc-arr" viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M6 9l6 6 6-6"/></svg>
+            </div>
+            <div class="pc-body">
+              <div class="pc-row"><span class="pc-type" style="background:#F2EDFB;border-color:#D4C2F0;color:#4A1F80">Keep</span><span class="pc-hint">Giá trị mua của KH × Tỷ lệ %</span></div>
+            </div>
+          </div>
+
+          <div class="pc">
+            <div class="pc-head" onclick="togPc(this)">
+              <div class="pc-left">
+                <span class="pc-name">Tích sản hưu trí · Tích sản mục tiêu</span>
+                <div class="pc-tags">
+                  <span class="pc-tag" style="background:#F2EDFB;border-color:#D4C2F0;color:#4A1F80">K</span>
+                </div>
+              </div>
+              <svg class="pc-arr" viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M6 9l6 6 6-6"/></svg>
+            </div>
+            <div class="pc-body">
+              <div class="pc-row"><span class="pc-type" style="background:#F2EDFB;border-color:#D4C2F0;color:#4A1F80">Keep</span><span class="pc-hint">Giá trị mua của KH × Tỷ lệ %</span></div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- DSip -->
+      <div class="pg">
+        <div class="pg-head">
+          <span class="pg-badge" style="background:var(--orange-dim);border-color:var(--orange-bd);color:var(--orange)">DSip</span>
+          <span class="pg-desc">Kế hoạch đầu tư định kỳ</span>
+        </div>
+        <div class="pg-list">
+
+          <div class="pc">
+            <div class="pc-head" onclick="togPc(this)">
+              <div class="pc-left">
+                <span class="pc-name">DSIP</span>
+                <div class="pc-tags">
+                  <span class="pc-tag" style="background:#FFF0E8;border-color:#FADCC8;color:#B04A10">F</span>
+                  <span class="pc-tag" style="background:#EAF7F1;border-color:#B6E8D0;color:#0A6035">W</span>
+                </div>
+              </div>
+              <svg class="pc-arr" viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M6 9l6 6 6-6"/></svg>
+            </div>
+            <div class="pc-body">
+              <div class="pc-row"><span class="pc-type" style="background:#FFF0E8;border-color:#FADCC8;color:#B04A10">Find</span><span class="pc-hint">(Tổng giá trị mua – Tổng giá trị bán) toàn bộ kế hoạch DSIP khớp trong kỳ × Tỷ lệ %</span></div>
+              <div class="pc-row"><span class="pc-type" style="background:#EAF7F1;border-color:#B6E8D0;color:#0A6035">Win</span><span class="pc-hint">(Tổng giá trị mua – Tổng giá trị bán) toàn bộ kế hoạch DSIP khớp trong kỳ × Tỷ lệ %</span></div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <div style="font-size:11px;color:var(--text3);margin-top:.25rem">Bấm vào từng sản phẩm để xem công thức · Tỷ lệ % tra cứu trong file cơ chế nội bộ</div>
     </div>
   </div>
 
-  <div class="sep"><div class="sl"></div><span>Tool tính hoa hồng tháng</span><div class="sl"></div></div>
+  <!-- Calculator -->
+  <div class="sep"><div class="sl"></div><span>Tool ước tính hoa hồng</span><div class="sl"></div></div>
 
   <div class="tcard">
     <div class="thead2">
       <div class="tico"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg></div>
-      <span>Nhập danh mục khách hàng — tính hoa hồng</span>
+      <span>Chọn sản phẩm — nhập số liệu — tính hoa hồng</span>
     </div>
     <div class="tbody2">
       <div class="fgrid" style="margin-bottom:12px">
-        <div class="fg"><label>Tên môi giới</label><input type="text" id="cn" placeholder="VD: Nguyễn Văn A"></div>
-        <div class="fg"><label>Kỳ tính hoa hồng</label><input type="text" id="cp" placeholder="VD: Tháng 6/2025"></div>
-      </div>
-      <div class="ctw">
-        <table class="ctbl">
-          <thead><tr>
-            <th style="width:25%">Tên khách hàng</th>
-            <th style="width:26%">Sản phẩm</th>
-            <th style="width:12%">Tỷ lệ</th>
-            <th style="width:22%">Doanh số (VND)</th>
-            <th style="width:11%">Hoa hồng</th>
-            <th style="width:36px"></th>
-          </tr></thead>
-          <tbody id="cbody"></tbody>
-          <tfoot><tr class="tfoot-r">
-            <td colspan="4" style="text-align:right;color:var(--text2)">Tổng hoa hồng tháng</td>
-            <td class="tot" id="ctot">0đ</td><td></td>
-          </tr></tfoot>
-        </table>
-      </div>
-      <button class="addbtn" onclick="addRow()">+ Thêm dòng khách hàng / sản phẩm</button>
-      <button class="cbtn" onclick="calcComm()">Xuất bảng tóm tắt →</button>
-      <div class="sbox" id="sbox">
-        <div class="shead"><h4 id="stitle">Bảng hoa hồng</h4><button class="cpybtn" onclick="doCopy()">Sao chép</button></div>
-        <div class="sbody">
-          <div class="smeta">
-            <div><div class="sml">Môi giới</div><div class="smv" id="sn">—</div></div>
-            <div><div class="sml">Kỳ tính</div><div class="smv" id="sp2">—</div></div>
-            <div><div class="sml">Tổng hoa hồng</div><div class="smv" style="color:var(--orange)" id="st">—</div></div>
-          </div>
-          <table class="stbl">
-            <thead><tr><th>Khách hàng</th><th>Sản phẩm</th><th>Doanh số</th><th>Tỷ lệ</th><th>Hoa hồng</th></tr></thead>
-            <tbody id="stbody"></tbody>
-          </table>
+        <div class="fg"><label>Tên khách hàng</label><input type="text" id="kh-name" placeholder="VD: Nguyễn Văn A"></div>
+        <div class="fg">
+          <label>Chọn sản phẩm</label>
+          <select id="prod-select" onchange="onProdChange()">
+            <option value="">-- Chọn sản phẩm --</option>
+          </select>
         </div>
+      </div>
+
+      <!-- Dynamic input area -->
+      <div id="prod-info" style="display:none">
+        <div id="no-payout-msg" style="display:none;background:var(--surface2);border-radius:9px;padding:.875rem 1rem;font-size:13px;color:var(--text3);text-align:center;margin-bottom:12px">
+          ⬜ Sản phẩm này <strong>không có payout</strong> trong cơ chế hiện hành
+        </div>
+        <div id="fwsk-inputs"></div>
+        <div id="calc-result" style="display:none;margin-top:.875rem">
+          <div style="background:var(--orange-dim);border:1px solid var(--orange-bd);border-radius:9px;padding:1rem 1.125rem">
+            <div style="font-size:10px;text-transform:uppercase;letter-spacing:.08em;color:#B04A10;margin-bottom:8px;font-weight:700">Ước tính hoa hồng</div>
+            <div id="result-rows" style="display:flex;flex-direction:column;gap:6px;margin-bottom:12px"></div>
+            <div style="border-top:1px solid var(--orange-bd);padding-top:10px;display:flex;justify-content:space-between;align-items:center">
+              <span style="font-size:13px;font-weight:600;color:var(--text)">Tổng hoa hồng ước tính</span>
+              <span style="font-family:'DM Serif Display',serif;font-size:1.5rem;color:var(--orange)" id="grand-total">0đ</span>
+            </div>
+            <div style="margin-top:8px;font-size:11px;color:#B04A10;font-style:italic">* Kết quả mang tính tham khảo — tỷ lệ % do bạn tự nhập từ file cơ chế nội bộ</div>
+          </div>
+        </div>
+        <button class="cbtn" id="calc-fwsk-btn" style="display:none;margin-top:12px" onclick="calcFWSK()">Tính hoa hồng →</button>
       </div>
     </div>
   </div>
@@ -369,10 +620,10 @@ footer p{font-size:12px;color:var(--text3)}
       <div class="kgrid">
         <div class="kcard"><div class="kc-l">Số TK mở mới</div><div class="kc-v">30%</div><div class="kc-s">KPI: 10 TK · tối đa 30%</div></div>
         <div class="kcard"><div class="kc-l">Số TK Active</div><div class="kc-v">40%</div><div class="kc-s">KPI: 5 TK · tối đa 45%</div></div>
-        <div class="kcard"><div class="kc-l">Doanh thu phí</div><div class="kc-v">30%</div><div class="kc-s">tính trên KH tự phát triển · tối đa 60%</div></div>
+        <div class="kcard"><div class="kc-l">Doanh thu phí</div><div class="kc-v">30%</div><div class="kc-s">Tự PT · tối đa 60%</div></div>
       </div>
-      <div class="krow" style="margin-top:.5rem"><div class="kdot"></div><div class="klbl">Doanh thu tính theo</div><div class="kval">Chỉ tính KH <b>tự phát triển</b> — không tính KH được phân bổ từ công ty hoặc khách hàng chuyển từ Môi giới khác sang và đã active từ trước</div></div>
-      <div class="krow"><div class="kdot"></div><div class="klbl">Vượt target</div><div class="kval">TK Active tối đa 45% · Doanh thu tối đa 60% — vượt thêm không được cộng</div></div>
+      <div class="krow" style="margin-top:.5rem"><div class="kdot"></div><div class="klbl">Doanh thu tính theo</div><div class="kval">Chỉ tính KH <b>tự phát triển</b> — không tính KH được phân bổ từ công ty</div></div>
+      <div class="krow"><div class="kdot"></div><div class="klbl">Vượt target</div><div class="kval">TK Active tối đa 45% · Doanh thu tối đa 60% — vượt thêm không được cộng điểm</div></div>
     </div>
   </div>
 
@@ -390,13 +641,13 @@ footer p{font-size:12px;color:var(--text3)}
 
   <div class="acc">
     <button class="acc-head" onclick="tog(this)">
-      <span class="atitle">Kết quả đánh giá</span>
+      <span class="atitle">Kết quả & Hệ quả sau đánh giá <span class="atag">xử lý</span></span>
       <svg class="aarr" viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M6 9l6 6 6-6"/></svg>
     </button>
     <div class="acc-body">
-      <div class="krow"><div class="kdot"></div><div class="klbl">KPI ≥ 80%</div><div class="kval"><span class="g">Đạt thử việc</span> — chuyển ký HĐLĐ chính thức, sau đó xét hạng level theo cơ chế 2025 (chỉ xét từ level3 trở lên)</div></div>
-      <div class="krow"><div class="kdot"></div><div class="klbl">KPI &lt; 80%</div><div class="kval"><span class="r">Chưa đạt</span> — Chuyển MGĐL hoặc chấm dứt hợp đồng</div></div>
-      <div class="krow"><div class="kdot"></div><div class="klbl">Thời điểm đánh giá</div><div class="kval">Kết thúc thời gian thử việc 2 tháng</div></div>
+      <div class="krow"><div class="kdot"></div><div class="klbl">KPI ≥ 80%</div><div class="kval"><span class="g">Đạt thử việc</span> — chuyển nhân viên chính thức, áp dụng cơ chế lương & hoa hồng tiêu chuẩn</div></div>
+      <div class="krow"><div class="kdot"></div><div class="klbl">KPI &lt; 80%</div><div class="kval"><span class="r">Chưa đạt</span> — Trưởng nhóm và HR thảo luận hướng xử lý (gia hạn / chấm dứt)</div></div>
+      <div class="krow"><div class="kdot"></div><div class="klbl">Thời điểm đánh giá</div><div class="kval">Cuối kỳ thử việc — Trưởng nhóm xác nhận kết quả trước khi gửi HR phê duyệt</div></div>
     </div>
   </div>
 
@@ -446,8 +697,8 @@ footer p{font-size:12px;color:var(--text3)}
     <div class="pills">
       <span class="pill" style="background:var(--blue-bg);border-color:var(--blue-bd);color:#0C447C">Kỳ 1: Tháng 1 – 6</span>
       <span class="pill" style="background:var(--blue-bg);border-color:var(--blue-bd);color:#0C447C">Kỳ 2: Tháng 7 – 12</span>
-      <span class="pill" style="background:var(--green-bg);border-color:var(--green-bd);color:#0A6035">Đối tượng: MGĐL /MG ký HĐLĐ ≥ 2 tháng tại kỳ đánh giá</span>
-      <span class="pill" style="background:var(--orange-dim);border-color:var(--orange-bd);color:#B04A10">Dữ liệu tính review: Theo vai Client careby</span>
+      <span class="pill" style="background:var(--green-bg);border-color:var(--green-bd);color:#0A6035">Đối tượng: MGĐL / HĐLĐ ≥ 2 tháng tại kỳ đánh giá</span>
+      <span class="pill" style="background:var(--orange-dim);border-color:var(--orange-bd);color:#B04A10">Quan hệ careby: Client careby</span>
     </div>
   </div>
 
@@ -461,7 +712,7 @@ footer p{font-size:12px;color:var(--text3)}
       <div class="krow"><div class="kdot"></div><div class="klbl">Hệ số thâm niên</div><div class="kval">Áp dụng với nhân sự <b>tuyển dụng mới</b> — tính từ ngày chính thức vào công ty</div></div>
       <div class="krow"><div class="kdot"></div><div class="klbl">Sau kỳ đánh giá</div><div class="kval">Môi giới có thể <b>tăng hạng hoặc giảm hạng</b> — kết quả xếp hạng có hiệu lực cho kỳ tiếp theo</div></div>
       <div class="krow"><div class="kdot"></div><div class="klbl">Mức thu nhập</div><div class="kval">Áp dụng theo title của vị trí trong <b>Phụ lục cơ chế 2018</b></div></div>
-      <div class="krow"><div class="kdot"></div><div class="klbl">Xem chi tiết</div><div class="kval"><a href="https://kms.ipas.com.vn/document/MThlNmE0MTUtYjVlYi00MjVlLTg4YmItM2E0OTAwMDAwZjk0?tmp=ZmFsc2U=&tmp2=cGRm" style="color:var(--blue);font-weight:500">Cơ chế 2025 xem tại đây</a> &nbsp;·&nbsp; <a href="https://dpolicy.ipam.vn/#/tim-kiem?referenceId=67c95cc18693104c6f3579d9&activeTab=1" style="color:var(--blue);font-weight:500">Cơ chế 2018 xem tại đây</a></div></div>
+      <div class="krow"><div class="kdot"></div><div class="klbl">Xem chi tiết</div><div class="kval"><a href="#" style="color:var(--blue);font-weight:500">Cơ chế 2025 xem tại đây</a> &nbsp;·&nbsp; <a href="#" style="color:var(--blue);font-weight:500">Cơ chế 2018 xem tại đây</a></div></div>
     </div>
   </div>
 
@@ -473,12 +724,23 @@ footer p{font-size:12px;color:var(--text3)}
     <div class="acc-body open">
       <div class="class-grid">
 
-
+        <div class="class-card" style="background:var(--green-bg);border-color:var(--green-bd)">
+          <div class="cc-header">
+            <span class="cc-badge" style="background:var(--green);color:#fff">Nhóm 1</span>
+            <span class="cc-title">Môi giới thỏa mãn DCare</span>
+          </div>
+          <div class="cc-body">
+            Áp dụng theo <b>kịch bản ngưỡng GTGT bình quân ngày toàn thị trường</b> theo từng kỳ đánh giá — Cơ chế 2025.
+          </div>
+          <div class="cc-metrics">
+            <span class="cc-metric" style="background:var(--green-bg);border-color:var(--green-bd);color:var(--green)">Chỉ tiêu: Doanh thu phí giao dịch</span>
+          </div>
+        </div>
 
         <div class="class-card" style="background:var(--blue-bg);border-color:var(--blue-bd)">
           <div class="cc-header">
-            <span class="cc-badge" style="background:var(--blue);color:#fff">Nhóm 1</span>
-            <span class="cc-title">Môi giới không thỏa mãn DCare (Level 1 - Level 2)</span>
+            <span class="cc-badge" style="background:var(--blue);color:#fff">Nhóm 2</span>
+            <span class="cc-title">Môi giới không thỏa mãn DCare</span>
           </div>
           <div class="cc-body">
             Review theo <b>bộ 4 chỉ tiêu FCPL</b> — Cơ chế 2025.
@@ -490,18 +752,7 @@ footer p{font-size:12px;color:var(--text3)}
             <span class="cc-metric" style="background:var(--blue-bg);border-color:var(--blue-bd);color:var(--blue)">Tỷ lệ KH GD bình quân tháng</span>
           </div>
         </div>
-        <div class="class-card" style="background:var(--green-bg);border-color:var(--green-bd)">
-          <div class="cc-header">
-            <span class="cc-badge" style="background:var(--green);color:#fff">Nhóm 2</span>
-            <span class="cc-title">Môi giới thỏa mãn DCare (Level 3 - Level 9)</span>
-          </div>
-          <div class="cc-body">
-            Áp dụng theo <b>kịch bản ngưỡng GTGT bình quân ngày toàn thị trường</b> theo từng kỳ đánh giá — Cơ chế 2025.
-          </div>
-          <div class="cc-metrics">
-            <span class="cc-metric" style="background:var(--green-bg);border-color:var(--green-bd);color:var(--green)">Doanh thu phí giao dịch</span>
-          </div>
-        </div>
+
         <div class="class-card" style="background:var(--gold-bg);border-color:var(--gold-bd)">
           <div class="cc-header">
             <span class="cc-badge" style="background:var(--gold);color:#fff">Nhóm 3</span>
@@ -613,7 +864,7 @@ footer p{font-size:12px;color:var(--text3)}
   </div>
 
   <!-- 4. TOOL TÍNH -->
-  <div class="sep"><div class="sl"></div><span>Tool tính xếp hạng level kỳ này - Kịch bản áp dụng với Môi giới DCare - KỊCH BẢN 3</span><div class="sl"></div></div>
+  <div class="sep"><div class="sl"></div><span>Tool xếp hạng level tháng này</span><div class="sl"></div></div>
 
   <div class="tn-card">
     <div class="tn-left">
@@ -622,9 +873,9 @@ footer p{font-size:12px;color:var(--text3)}
     </div>
     <div class="tn-div"></div>
     <div class="tn-opts">
-      <button class="tn-btn on" data-val="0.6" onclick="setTN(this)">Thời gian vào công ty ≤ 6 tháng — 0.60</button>
-      <button class="tn-btn" data-val="0.85" onclick="setTN(this)">Thời gian vào công ty 6 tháng – 1 năm — 0.85</button>
-      <button class="tn-btn" data-val="1" onclick="setTN(this)">Thời gian vào công ty > 1 năm — 1.00</button>
+      <button class="tn-btn on" data-val="0.6" onclick="setTN(this)">≤ 6 tháng — 0.60</button>
+      <button class="tn-btn" data-val="0.85" onclick="setTN(this)">6 tháng – 1 năm — 0.85</button>
+      <button class="tn-btn" data-val="1" onclick="setTN(this)">> 1 năm — 1.00</button>
     </div>
   </div>
 
@@ -640,7 +891,7 @@ footer p{font-size:12px;color:var(--text3)}
         <div class="fg"><label>Tỷ lệ KH giao dịch (%)</label><input type="number" id="khgd" placeholder="VD: 45" min="0" step="0.1"><span class="fh">Target 50% · tỷ trọng 20% · nhập số VD: 45</span></div>
         <div class="fg"><label>Số SP TB/khách hàng</label><input type="number" id="sp" placeholder="VD: 2.5" min="0" step="0.1"><span class="fh">Target 3 · tỷ trọng 20% · dùng cho L1+2</span></div>
         <div class="fg"><label>NAV TB/tháng (VND)</label><input type="number" id="nav" placeholder="VD: 25,000,000,000" min="0"><span class="fh">Chỉ dùng cho MGCC · L1: 18tỷ → L4: 50tỷ</span></div>
-        <div class="fg"><label>Mức phí giao dịch cơ sở (%)</label><input type="number" id="phi" placeholder="VD: 0.22%" min="0" step="0.1"><span class="fh">Cần ≥ 0.22% mới xét nhóm MGCC</span></div>
+        <div class="fg"><label>Mức phí giao dịch cơ sở (%)</label><input type="number" id="phi" placeholder="VD: 22" min="0" step="0.1"><span class="fh">Cần ≥ 22% mới xét nhóm MGCC</span></div>
       </div>
       <button class="cbtn" onclick="calcLevel()">Tính xếp hạng level →</button>
       <div class="rarea" id="lres">
@@ -664,12 +915,299 @@ footer p{font-size:12px;color:var(--text3)}
 </div>
 
 <script>
-var PRODS=[
-  {name:'Cổ phiếu',rate:0.0015},{name:'Phái sinh',rate:0.0010},
-  {name:'Trái phiếu',rate:0.0008},{name:'Chứng quyền',rate:0.0020},
-  {name:'ETF',rate:0.0005},{name:'Sản phẩm khác',rate:0.0010}
+// ── FWSK Product Config ──────────────────────────────────────────
+// F=Find W=Win WB=Win-Back S=Serve K=Keep
+// input: label hiện ra, key: định danh ô nhập
+var FWSK_PRODUCTS = [
+  {
+    name: 'Giao dịch cơ sở',
+    tasks: [
+      { type:'F',  label:'Doanh thu thuần (Find)',     key:'f_rev',  hint:'Doanh thu thuần phát sinh trong kỳ' },
+      { type:'W',  label:'Doanh thu thuần (Win)',      key:'w_rev',  hint:'Doanh thu thuần phát sinh trong kỳ' },
+      { type:'WB', label:'Doanh thu thuần (Win-Back)', key:'wb_rev', hint:'Doanh thu thuần phát sinh trong kỳ' },
+      { type:'S',  label:'Doanh thu thuần (Serve)',    key:'s_rev',  hint:'Doanh thu thuần phát sinh trong kỳ' },
+      { type:'K',  label:'Doanh thu thuần (Keep)',     key:'k_rev',  hint:'Doanh thu thuần phát sinh trong kỳ' },
+    ]
+  },
+  { name: 'Dcash Grow', tasks: [], noPayout: true },
+  { name: 'Chứng quyền', tasks: [], noPayout: true },
+  {
+    name: 'Phái sinh',
+    tasks: [
+      { type:'S', label:'Doanh thu thuần (Serve)', key:'s_rev', hint:'Doanh thu thuần phát sinh trong kỳ' },
+    ]
+  },
+  {
+    name: 'Margin - T10',
+    tasks: [
+      { type:'F', label:'Doanh thu thuần (Find)',  key:'f_rev', hint:'Doanh thu thuần phát sinh trong kỳ' },
+      { type:'W', label:'Doanh thu thuần (Win)',   key:'w_rev', hint:'Doanh thu thuần phát sinh trong kỳ' },
+      { type:'S', label:'Doanh thu thuần (Serve)', key:'s_rev', hint:'Doanh thu thuần phát sinh trong kỳ' },
+      { type:'K', label:'Doanh thu thuần (Keep)',  key:'k_rev', hint:'Doanh thu thuần phát sinh trong kỳ' },
+    ]
+  },
+  {
+    name: 'CCQ Quỹ ngoài (VCBF / Vinacapital / Eastspring)',
+    tasks: [
+      { type:'F', label:'Tổng giá trị mua CCQ trong kỳ (Find)', key:'f_buy',  hint:'Tổng giá trị mua Chứng chỉ quỹ phát sinh trong kỳ' },
+      { type:'W', label:'Tổng giá trị mua CCQ trong kỳ (Win)',  key:'w_buy',  hint:'Tổng giá trị mua Chứng chỉ quỹ phát sinh trong kỳ' },
+      { type:'K', label:'Giá trị CCQ cuối kỳ (Keep)',           key:'k_end',  hint:'Tổng giá trị CCQ tại ngày cuối kỳ' },
+      { type:'K', label:'Giá trị mua phát sinh trong kỳ (Keep)',key:'k_buy',  hint:'Dùng để tính: Giá trị cuối kỳ – Giá trị mua trong kỳ' },
+    ],
+    keepFormula: 'k_end - k_buy'
+  },
+  {
+    name: 'CCQ - VNDAF',
+    tasks: [
+      { type:'K', label:'Giá trị mua của KH (Keep)', key:'k_buy', hint:'Giá trị mua phát sinh trong kỳ' },
+    ]
+  },
+  {
+    name: 'Quỹ mở trái phiếu VNDBF',
+    tasks: [
+      { type:'K', label:'Giá trị mua của KH (Keep)', key:'k_buy', hint:'Giá trị mua phát sinh trong kỳ' },
+    ]
+  },
+  {
+    name: 'Quỹ mở VNDCF',
+    tasks: [
+      { type:'K', label:'Giá trị mua của KH (Keep)', key:'k_buy', hint:'Giá trị mua phát sinh trong kỳ' },
+    ]
+  },
+  {
+    name: 'VNDAFS',
+    tasks: [
+      { type:'K', label:'Giá trị mua của KH (Keep)', key:'k_buy', hint:'Giá trị mua phát sinh trong kỳ' },
+    ]
+  },
+  {
+    name: 'VNVALUE',
+    tasks: [
+      { type:'K', label:'Giá trị mua của KH (Keep)', key:'k_buy', hint:'Giá trị mua phát sinh trong kỳ' },
+    ]
+  },
+  {
+    name: 'Tích sản hưu trí',
+    tasks: [
+      { type:'K', label:'Giá trị mua của KH (Keep)', key:'k_buy', hint:'Giá trị mua phát sinh trong kỳ' },
+    ]
+  },
+  {
+    name: 'Tích sản mục tiêu',
+    tasks: [
+      { type:'K', label:'Giá trị mua của KH (Keep)', key:'k_buy', hint:'Giá trị mua phát sinh trong kỳ' },
+    ]
+  },
+  {
+    name: 'Dmoney plus',
+    tasks: [
+      { type:'F', label:'Giá trị nắm giữ (Find)', key:'f_hold', hint:'Giá trị nắm giữ tại thời điểm tính' },
+      { type:'K', label:'Giá trị nắm giữ (Keep)', key:'k_hold', hint:'Giá trị nắm giữ tại thời điểm tính' },
+    ]
+  },
+  {
+    name: 'Dbond',
+    tasks: [
+      { type:'W', label:'Giá trị mua của KH (Win)',  key:'w_buy', hint:'Giá trị mua phát sinh trong kỳ' },
+      { type:'K', label:'Giá trị mua của KH (Keep)', key:'k_buy', hint:'Giá trị mua phát sinh trong kỳ' },
+    ]
+  },
+  {
+    name: 'DSIP',
+    tasks: [
+      { type:'F', label:'Tổng giá trị mua (Find)',  key:'f_buy',  hint:'Tổng giá trị mua của toàn bộ kế hoạch DSIP được khớp trong kỳ' },
+      { type:'F', label:'Tổng giá trị bán (Find)',  key:'f_sell', hint:'Tổng giá trị bán của toàn bộ kế hoạch DSIP được khớp trong kỳ' },
+      { type:'W', label:'Tổng giá trị mua (Win)',   key:'w_buy',  hint:'Tổng giá trị mua của toàn bộ kế hoạch DSIP được khớp trong kỳ' },
+      { type:'W', label:'Tổng giá trị bán (Win)',   key:'w_sell', hint:'Tổng giá trị bán của toàn bộ kế hoạch DSIP được khớp trong kỳ' },
+    ],
+    findFormula: 'f_buy - f_sell',
+    winFormula:  'w_buy - w_sell'
+  },
 ];
-var rids=[],rid=0,pl=1,tn=0.6;
+
+// Color per task type
+var TYPE_COLOR = { F:'#E8621A', W:'#0F8A4A', WB:'#185FA5', S:'#6B3FA0', K:'#A07010' };
+var TYPE_BG    = { F:'#FFF0E8', W:'#EAF7F1', WB:'#E6F1FB', S:'#F2EDFB', K:'#FFF8EE' };
+var TYPE_BD    = { F:'#FADCC8', W:'#B6E8D0', WB:'#B5D4F4', S:'#D4C2F0', K:'#F5D898' };
+var TYPE_LABEL = { F:'Find', W:'Win', WB:'Win-Back', S:'Serve', K:'Keep' };
+
+// Build matrix table
+(function buildMatrix(){
+  var tbody = document.getElementById('fwsk-matrix');
+  if(!tbody) return;
+  var allTypes = ['F','W','WB','S','K'];
+  FWSK_PRODUCTS.forEach(function(prod){
+    var tr = document.createElement('tr');
+    var hasTask = function(t){ return prod.tasks && prod.tasks.some(function(x){return x.type===t;}); };
+    var tdName = '<td style="padding:.625rem .875rem;border-bottom:1px solid var(--border);font-size:13px;color:var(--text);font-weight:500">'+prod.name+'</td>';
+    var tdTypes = allTypes.map(function(t){
+      if(prod.noPayout) return '<td style="text-align:center;padding:.625rem .75rem;border-bottom:1px solid var(--border);font-size:16px;color:var(--text3)">—</td>';
+      return hasTask(t)
+        ? '<td style="text-align:center;padding:.625rem .75rem;border-bottom:1px solid var(--border);font-size:16px">✅</td>'
+        : '<td style="text-align:center;padding:.625rem .75rem;border-bottom:1px solid var(--border);font-size:16px;color:var(--surface2)">⬜</td>';
+    }).join('');
+    var inputHint = prod.noPayout ? '<span style="color:var(--text3);font-size:12px">Không có payout</span>'
+      : '<span style="font-size:12px;color:var(--text2)">'+(prod.tasks.map(function(t){return t.hint;}).filter(function(v,i,a){return a.indexOf(v)===i;}).slice(0,2).join(' · '))+'</span>';
+    var tdHint = '<td style="padding:.625rem .875rem;border-bottom:1px solid var(--border)">'+inputHint+'</td>';
+    tr.innerHTML = tdName + tdTypes + tdHint;
+    tbody.appendChild(tr);
+  });
+})();
+
+// Build product select
+(function buildSelect(){
+  var sel = document.getElementById('prod-select');
+  if(!sel) return;
+  FWSK_PRODUCTS.forEach(function(prod){
+    var opt = document.createElement('option');
+    opt.value = prod.name;
+    opt.textContent = prod.name + (prod.noPayout ? ' (không có payout)' : '');
+    sel.appendChild(opt);
+  });
+})();
+
+function fmtV(v){
+  if(!v||isNaN(v))return'0đ';
+  if(v>=1e9)return(v/1e9).toFixed(2).replace(/\.?0+$/,'')+'tỷ đ';
+  if(v>=1e6)return(v/1e6).toFixed(2).replace(/\.?0+$/,'')+'tr đ';
+  return Math.round(v).toLocaleString('vi-VN')+'đ';
+}
+function n(id){return parseFloat(document.getElementById(id)?document.getElementById(id).value:0)||0;}
+function nq(id){var el=document.getElementById(id);return el?parseFloat(el.value)||0:0;}
+
+function onProdChange(){
+  var sel = document.getElementById('prod-select');
+  var name = sel.value;
+  var prod = FWSK_PRODUCTS.find(function(p){return p.name===name;});
+  var infoDiv = document.getElementById('prod-info');
+  var noPayDiv = document.getElementById('no-payout-msg');
+  var inputsDiv = document.getElementById('fwsk-inputs');
+  var calcBtn = document.getElementById('calc-fwsk-btn');
+  var resultDiv = document.getElementById('calc-result');
+  if(!prod){infoDiv.style.display='none';return;}
+  infoDiv.style.display='block';
+  resultDiv.style.display='none';
+  if(prod.noPayout){
+    noPayDiv.style.display='block';inputsDiv.innerHTML='';calcBtn.style.display='none';return;
+  }
+  noPayDiv.style.display='none';
+
+  // Group tasks by type for DSIP/CCQ special formulas
+  var html = '';
+  var shownKeys = {};
+
+  // Special: DSIP - show mua/bán pairs per type
+  if(prod.findFormula || prod.winFormula || prod.keepFormula){
+    var types = {};
+    prod.tasks.forEach(function(t){
+      if(!types[t.type]) types[t.type]=[];
+      types[t.type].push(t);
+    });
+    Object.keys(types).forEach(function(tp){
+      var tasks = types[tp];
+      var c=TYPE_COLOR[tp],bg=TYPE_BG[tp],bd=TYPE_BD[tp];
+      html += '<div style="background:'+bg+';border:1px solid '+bd+';border-radius:9px;padding:.875rem 1rem;margin-bottom:10px">';
+      html += '<div style="font-size:11px;font-weight:700;color:'+c+';letter-spacing:.06em;margin-bottom:8px">'+TYPE_LABEL[tp]+'</div>';
+      tasks.forEach(function(t){
+        if(shownKeys[t.key]) return; shownKeys[t.key]=true;
+        html += '<div class="fg" style="margin-bottom:8px">'
+          +'<label style="font-size:12px;font-weight:600;color:var(--text2)">'+t.label+' (VND)</label>'
+          +'<input type="number" id="inp_'+t.key+'" placeholder="0" min="0" style="background:var(--white)">'
+          +'<span style="font-size:11px;color:var(--text3)">'+t.hint+'</span></div>';
+      });
+      html += '<div class="fg" style="margin-bottom:0">'
+        +'<label style="font-size:12px;font-weight:600;color:var(--text2)">Tỷ lệ payout '+TYPE_LABEL[tp]+' (%) — tra file nội bộ</label>'
+        +'<input type="number" id="rate_'+tp+'" placeholder="VD: 0.05" min="0" step="0.001" style="background:var(--white)">'
+        +'</div>';
+      html += '</div>';
+    });
+  } else {
+    // Normal: group by type, 1 input per task
+    var typesSeen = {};
+    prod.tasks.forEach(function(t){
+      if(!typesSeen[t.type]) typesSeen[t.type]=true;
+      else return;
+      var c=TYPE_COLOR[t.type],bg=TYPE_BG[t.type],bd=TYPE_BD[t.type];
+      html += '<div style="background:'+bg+';border:1px solid '+bd+';border-radius:9px;padding:.875rem 1rem;margin-bottom:10px">';
+      html += '<div style="font-size:11px;font-weight:700;color:'+c+';letter-spacing:.06em;margin-bottom:8px">'+TYPE_LABEL[t.type]+'</div>';
+      // All tasks of this type for this product
+      prod.tasks.filter(function(x){return x.type===t.type;}).forEach(function(task){
+        if(shownKeys[task.key]) return; shownKeys[task.key]=true;
+        html += '<div class="fg" style="margin-bottom:8px">'
+          +'<label style="font-size:12px;font-weight:600;color:var(--text2)">'+task.label+' (VND)</label>'
+          +'<input type="number" id="inp_'+task.key+'" placeholder="0" min="0" style="background:var(--white)">'
+          +'<span style="font-size:11px;color:var(--text3)">'+task.hint+'</span></div>';
+      });
+      html += '<div class="fg" style="margin-bottom:0">'
+        +'<label style="font-size:12px;font-weight:600;color:var(--text2)">Tỷ lệ payout '+TYPE_LABEL[t.type]+' (%) — tra file nội bộ</label>'
+        +'<input type="number" id="rate_'+t.type+'" placeholder="VD: 0.05" min="0" step="0.001" style="background:var(--white)">'
+        +'</div>';
+      html += '</div>';
+    });
+  }
+  inputsDiv.innerHTML = html;
+  calcBtn.style.display = 'block';
+}
+
+function calcFWSK(){
+  var sel = document.getElementById('prod-select');
+  var name = sel.value;
+  var prod = FWSK_PRODUCTS.find(function(p){return p.name===name;});
+  if(!prod||prod.noPayout) return;
+
+  var rows = [];
+  var total = 0;
+
+  function getRate(tp){ return (nq('rate_'+tp)||0)/100; }
+  function getVal(key){ return nq('inp_'+key)||0; }
+
+  // Compute base value per type
+  var typeDone = {};
+  prod.tasks.forEach(function(t){
+    if(typeDone[t.type]) return;
+    typeDone[t.type] = true;
+    var rate = getRate(t.type);
+    var base = 0;
+    var label = TYPE_LABEL[t.type];
+
+    if(t.type==='F' && prod.findFormula){
+      base = getVal('f_buy') - getVal('f_sell');
+    } else if(t.type==='W' && prod.winFormula){
+      base = getVal('w_buy') - getVal('w_sell');
+    } else if(t.type==='K' && prod.keepFormula){
+      base = getVal('k_end') - getVal('k_buy');
+    } else {
+      // single input tasks of same type → use first key
+      var firstTask = prod.tasks.find(function(x){return x.type===t.type;});
+      base = getVal(firstTask.key);
+    }
+
+    var hh = Math.max(0, base) * rate;
+    total += hh;
+    rows.push({label: label, base: base, rate: rate*100, hh: hh, color: TYPE_COLOR[t.type]});
+  });
+
+  var html = '';
+  rows.forEach(function(r){
+    html += '<div style="display:flex;justify-content:space-between;align-items:center;padding:5px 0;border-bottom:0.5px solid var(--orange-bd)">'
+      +'<span style="font-size:12px;color:var(--text2)"><span style="font-weight:600;color:'+r.color+'">'+r.label+'</span> · Giá trị: '+fmtV(r.base)+' · Tỷ lệ: '+r.rate.toFixed(3)+'%</span>'
+      +'<span style="font-size:13px;font-weight:600;color:var(--text)">'+fmtV(r.hh)+'</span></div>';
+  });
+  document.getElementById('result-rows').innerHTML = html;
+  document.getElementById('grand-total').textContent = fmtV(total);
+  document.getElementById('calc-result').style.display = 'block';
+}
+
+function togPc(head){
+  var body=head.nextElementSibling;
+  var arr=head.querySelector('.pc-arr');
+  if(!body) return;
+  var open=body.classList.contains('open');
+  body.className=open?'pc-body':'pc-body open';
+  if(arr) arr.style.transform=open?'':'rotate(180deg)';
+}
+
+var pl=1,tn=0.6;
 
 function sw(i,el){
   document.querySelectorAll('.panel').forEach(function(p){p.className='panel';});
@@ -829,7 +1367,7 @@ function calcL39(dtp,b){
   return{lv:'Chưa đạt',det:fmtV(Math.round(d))+' (cần ≥ 40tr)'};
 }
 function calcMGCC(phi,dtp,nav,b){
-  if(phi<0.22)return{lv:'Không đủ ĐK',det:'Phí '+phi+'% < 0.22%'};
+  if(phi<22)return{lv:'Không đủ ĐK',det:'Phí '+phi+'% < 22%'};
   var d=dtp/b,ld=0,ln=0;
   if(d>=240000000)ld=4;else if(d>=160000000)ld=3;else if(d>=90000000)ld=2;else if(d>=50000000)ld=1;
   if(nav>=50000000000)ln=4;else if(nav>=40000000000)ln=3;else if(nav>=30000000000)ln=2;else if(nav>=18000000000)ln=1;
