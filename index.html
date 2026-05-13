@@ -247,7 +247,7 @@ footer p{font-size:12px;color:var(--text3)}
     <h1>Cơ Chế <em>Kinh Doanh</em><br>Môi Giới Chứng Khoán</h1>
     <p class="hdesc">3 cơ chế cốt lõi: Payout · Đánh giá thử việc · Review định kỳ — hiểu nhanh, áp dụng ngay.</p>
   </div>
-  <span class="vpill">Phiên bản 2025</span>
+
 </header>
 
 <div class="tab-nav">
@@ -712,7 +712,7 @@ footer p{font-size:12px;color:var(--text3)}
       <div class="krow"><div class="kdot"></div><div class="klbl">Hệ số thâm niên</div><div class="kval">Áp dụng với nhân sự <b>tuyển dụng mới</b> — tính từ ngày chính thức vào công ty</div></div>
       <div class="krow"><div class="kdot"></div><div class="klbl">Sau kỳ đánh giá</div><div class="kval">Môi giới có thể <b>tăng hạng hoặc giảm hạng</b> — kết quả xếp hạng có hiệu lực cho kỳ tiếp theo</div></div>
       <div class="krow"><div class="kdot"></div><div class="klbl">Mức thu nhập</div><div class="kval">Áp dụng theo title của vị trí trong <b>Phụ lục cơ chế 2018</b></div></div>
-      <div class="krow"><div class="kdot"></div><div class="klbl">Xem chi tiết</div><div class="kval"><a href="#" style="color:var(--blue);font-weight:500">Cơ chế 2025 xem tại đây</a> &nbsp;·&nbsp; <a href="#" style="color:var(--blue);font-weight:500">Cơ chế 2018 xem tại đây</a></div></div>
+      <div class="krow"><div class="kdot"></div><div class="klbl">Xem chi tiết</div><div class="kval"><a href="https://kms.ipas.com.vn/document/MThlNmE0MTUtYjVlYi00MjVlLTg4YmItM2E0OTAwMDAwZjk0?tmp=ZmFsc2U=&tmp2=cGRm" style="color:var(--blue);font-weight:500">Cơ chế 2025 xem tại đây</a> &nbsp;·&nbsp; <a href="https://dpolicy.ipam.vn/#/tim-kiem?referenceId=67c95cc18693104c6f3579d9&activeTab=1" style="color:var(--blue);font-weight:500">Cơ chế 2018 xem tại đây</a></div></div>
     </div>
   </div>
 
@@ -891,7 +891,7 @@ footer p{font-size:12px;color:var(--text3)}
         <div class="fg"><label>Tỷ lệ KH giao dịch (%)</label><input type="number" id="khgd" placeholder="VD: 45" min="0" step="0.1"><span class="fh">Target 50% · tỷ trọng 20% · nhập số VD: 45</span></div>
         <div class="fg"><label>Số SP TB/khách hàng</label><input type="number" id="sp" placeholder="VD: 2.5" min="0" step="0.1"><span class="fh">Target 3 · tỷ trọng 20% · dùng cho L1+2</span></div>
         <div class="fg"><label>NAV TB/tháng (VND)</label><input type="number" id="nav" placeholder="VD: 25,000,000,000" min="0"><span class="fh">Chỉ dùng cho MGCC · L1: 18tỷ → L4: 50tỷ</span></div>
-        <div class="fg"><label>Mức phí giao dịch cơ sở (%)</label><input type="number" id="phi" placeholder="VD: 22" min="0" step="0.1"><span class="fh">Cần ≥ 22% mới xét nhóm MGCC</span></div>
+        <div class="fg"><label>Mức phí giao dịch cơ sở (%)</label><input type="number" id="phi" placeholder="VD: 22" min="0" step="0.1"><span class="fh">Cần ≥ 0.22% mới xét nhóm MGCC</span></div>
       </div>
       <button class="cbtn" onclick="calcLevel()">Tính xếp hạng level →</button>
       <div class="rarea" id="lres">
@@ -909,7 +909,7 @@ footer p{font-size:12px;color:var(--text3)}
 </div>
 
 <footer>
-  <p>Tài liệu nội bộ · Không phát hành ra bên ngoài · © 2025</p>
+  <p>Tài liệu nội bộ · Không phát hành ra bên ngoài </p>
   <span class="fpill">Internal Handbook 2025</span>
 </footer>
 </div>
@@ -1367,7 +1367,7 @@ function calcL39(dtp,b){
   return{lv:'Chưa đạt',det:fmtV(Math.round(d))+' (cần ≥ 40tr)'};
 }
 function calcMGCC(phi,dtp,nav,b){
-  if(phi<22)return{lv:'Không đủ ĐK',det:'Phí '+phi+'% < 22%'};
+  if(phi<22)return{lv:'Không đủ ĐK',det:'Phí '+phi+'% < 0.22%'};
   var d=dtp/b,ld=0,ln=0;
   if(d>=240000000)ld=4;else if(d>=160000000)ld=3;else if(d>=90000000)ld=2;else if(d>=50000000)ld=1;
   if(nav>=50000000000)ln=4;else if(nav>=40000000000)ln=3;else if(nav>=30000000000)ln=2;else if(nav>=18000000000)ln=1;
